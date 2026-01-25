@@ -15,7 +15,7 @@ An MCP (Model Context Protocol) server that provides AI assistants with searchab
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/yourusername/Autodesk_MCP.git
+git clone https://github.com/Roshan-RB/Autodesk_MCP.git
 cd Autodesk_MCP
 
 # Create virtual environment
@@ -29,9 +29,22 @@ source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Install Playwright browser (required for scraping)
+playwright install chromium
 ```
 
-### 2. Connect to Your AI Tool
+### 2. Scrape Documentation (Required - One Time)
+
+Before using the MCP server, you need to scrape the documentation from Autodesk's website:
+
+```bash
+python -m scraper.scraper
+```
+
+> **Note:** This will open a browser window and scrape ~225 documentation pages. The process takes approximately 20-25 minutes. The scraped data is saved locally to `data/docs/` and is not included in this repository.
+
+### 3. Connect to Your AI Tool
 
 Add the following to your MCP client configuration:
 
@@ -60,10 +73,9 @@ Once connected, your AI assistant can use these tools:
 | `get_doc_by_title(title)` | Get full content of a specific page |
 | `list_available_docs()` | List all available documentation pages |
 
-
 ## Documentation Coverage
 
-This server includes documentation for:
+The scraper collects documentation for:
 
 - **Class Reference** - AlCurve, AlSurface, AlDagNode, AlUniverse, and 100+ more
 - **Plugin Development** - Momentary, Continuous, and Command History plugins
@@ -78,10 +90,24 @@ Autodesk_MCP/
 ├── requirements.txt    # Python dependencies
 ├── server/             # MCP server implementation
 │   └── mcp_server.py
-├── data/docs/          # Pre-scraped documentation (225 pages)
-└── scraper/            # Documentation scraper (for updates)
+├── scraper/            # Documentation scraper
+│   ├── config.py       # Scraper configuration
+│   └── scraper.py      # Main scraper logic
+└── data/docs/          # Scraped documentation (generated locally)
+```
+
+## Re-scraping Documentation
+
+To update the documentation (e.g., for a newer Alias version):
+
+```bash
+# Delete existing docs
+rm -rf data/docs/*
+
+# Re-run scraper
+python -m scraper.scraper
 ```
 
 ## License
 
-This project provides access to Autodesk Alias documentation. Please refer to [Autodesk's terms of use](https://www.autodesk.com/company/legal-notices-trademarks) for documentation licensing.
+This project provides a tool to access Autodesk Alias documentation. The documentation content itself is © Autodesk Inc. Please refer to [Autodesk's terms of use](https://www.autodesk.com/company/legal-notices-trademarks) for documentation licensing.
