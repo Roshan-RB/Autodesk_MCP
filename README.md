@@ -1,4 +1,4 @@
-# Autodesk Alias API — MCP Server
+# Autodesk Alias API - MCP Server
 
 An MCP (Model Context Protocol) server that gives AI assistants searchable access to the **Autodesk Alias API** documentation — right inside tools like Claude Desktop, Cursor, or any MCP-compatible client.
 
@@ -8,7 +8,7 @@ An MCP (Model Context Protocol) server that gives AI assistants searchable acces
 
 ## How It Works
 
-The Autodesk Alias Python API documentation was scraped from the official Autodesk help site and stored locally as structured JSON files. The MCP server loads these files at startup and exposes them through a set of tools that any MCP-compatible AI assistant can call.
+The Autodesk Alias API documentation was scraped from the official Autodesk help site and stored locally as structured JSON files. The MCP server loads these files at startup and exposes them through a set of tools that any MCP-compatible AI assistant can call.
 
 ---
 
