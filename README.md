@@ -1,4 +1,4 @@
-# Autodesk Alias Python API - MCP Server
+# Autodesk Alias API - MCP Server
 
 An MCP (Model Context Protocol) server that provides AI assistants with searchable access to the Autodesk Alias Python API documentation.
 
