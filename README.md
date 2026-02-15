@@ -8,39 +8,61 @@ An MCP (Model Context Protocol) server that gives AI assistants searchable acces
 
 ## How It Works
 
-The Autodesk Alias API documentation was scraped from the official Autodesk help site and stored locally as structured JSON files. The MCP server loads these files at startup and exposes them through a set of tools that any MCP-compatible AI assistant can call.
+The Autodesk Alias API documentation was scraped from the official Autodesk help site and stored locally as structured JSON files. At startup the server loads all **231 documentation pages**, strips unnecessary data to save memory, and builds a **BM25 search index** for fast, relevance-ranked retrieval.
 
 ---
 
 ## Available Tools
 
-The server currently exposes **three tools**:
+The server exposes **four tools**, all with Pydantic-validated inputs, tool annotations, and optional JSON output:
 
-### `search_alias_docs(query, max_results)`
+### `search_alias_docs(query, max_results, response_format)`
 
-Search across all documentation pages using natural-language keywords. Results are ranked by a simple relevance score and returned with a snippet for quick context.
+Search across all documentation using **BM25 (Okapi)** ranking. Results include relevance scores, matched terms, and content snippets. Heuristic boosts are applied for exact title matches and pages with code blocks.
 
 ```
 Example: search_alias_docs("create NURBS surface")
+Example: search_alias_docs("AlCurve", response_format="json")
 ```
 
 ### `get_doc_by_title(title)`
 
-Retrieve the **full content** of a specific documentation page by its title (partial match supported). Useful when you already know the class or topic you need.
+Retrieve the **full content** of a documentation page by its title (partial match supported). Returns title suggestions if no match is found.
 
 ```
 Example: get_doc_by_title("AlCurve")
 ```
 
-### `list_available_docs()`
+### `list_available_docs(limit, offset, category, response_format)`
 
-Returns a list of all **225+ scraped documentation pages** with their titles and GUIDs — handy for browsing and discovering what's available.
+Paginated listing of all documentation pages. Supports filtering by category (`class` for API reference, `guide` for tutorials/examples) and returns pagination metadata (`has_more`, `next_offset`).
+
+```
+Example: list_available_docs(category="class", limit=20)
+Example: list_available_docs(offset=30, response_format="json")
+```
+
+### `get_code_examples(topic, max_results, response_format)`
+
+Find documentation pages that contain **code examples** for a given topic. Filters search results to only pages with code blocks — ideal for finding sample plug-ins and API usage patterns.
+
+```
+Example: get_code_examples("plug-in")
+Example: get_code_examples("NURBS", response_format="json")
+```
+
+---
+
+## MCP Resources
+
+Two read-only resources for lightweight programmatic access:
+
+- **`docs://index`** — Full JSON index of all pages (title, GUID, URL, has_code, category)
+- **`docs://stats`** — Corpus summary (total pages, class/guide/code counts)
 
 ---
 
 ## Quick Start
-
-> This is an early-stage prototype — the setup is straightforward.
 
 1. **Clone & install dependencies**
 
@@ -57,7 +79,7 @@ Returns a list of all **225+ scraped documentation pages** with their titles and
      "mcpServers": {
        "autodesk-alias-docs": {
          "command": "/path/to/Autodesk_MCP/venv/Scripts/python.exe",
-         "args": ["/path/to/Autodesk_MCP/run_server.py"]
+         "args": ["/path/to/Autodesk_MCP/run_server_v3.py"]
        }
      }
    }
@@ -69,7 +91,7 @@ Returns a list of all **225+ scraped documentation pages** with their titles and
 
 ## Documentation Coverage
 
-The scraped dataset covers:
+The scraped dataset covers **231 pages** including:
 
 - **Class Reference** — AlCurve, AlSurface, AlDagNode, AlUniverse, and 100+ more
 - **Plugin Development** — Momentary, Continuous, and Command History plugins
@@ -80,11 +102,9 @@ The scraped dataset covers:
 
 ## What's Next
 
-This project is in its early stages. Here's where the development is heading:
-
-- **Hybrid / Semantic Retrieval** — Replacing the current keyword search with a hybrid or semantic retrieval strategy for more accurate, context-aware results.
-- **Context-Based Tool Selection** — Exploring smarter ways to route queries to the right tool, based on the user's intent and context.
-- **Plugin Development** — Building real Autodesk Alias plugins powered by this MCP server and testing whether an AI-assisted workflow actually works in practice.
+- **Semantic Retrieval** — Augmenting BM25 with embedding-based search for better context-aware results
+- **Context-Based Tool Selection** — Smarter query routing based on user intent
+- **Plugin Development** — Building real Autodesk Alias plugins powered by this MCP server
 
 Stay tuned — this repo is actively being developed. ⭐
 
