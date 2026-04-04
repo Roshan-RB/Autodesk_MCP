@@ -40,3 +40,7 @@ build/
 
 
 mcp-builder/
+alias-plugin/
+.agent/
+
+old_trash_files/*

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "autodesk-v2": {
+      "command": "C:/Thesis/Roshan_Projects/Autodesk_MCP/venv/Scripts/python.exe",
+      "args": [
+        "C:/Thesis/Roshan_Projects/Autodesk_MCP/run_server_v2.py"
+      ]
+    },
+    "autodesk-v3": {
+      "command": "C:/Thesis/Roshan_Projects/Autodesk_MCP/venv/Scripts/python.exe",
+      "args": [
+        "C:/Thesis/Roshan_Projects/Autodesk_MCP/run_server_v3.py"
+      ]
+    }
+  }
+}
