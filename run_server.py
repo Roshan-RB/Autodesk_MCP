@@ -1,6 +1,4 @@
-"""
-Entry point for the Autodesk Alias Documentation MCP Server.
-"""
+"""Entry point for the Autodesk Alias Documentation MCP Server."""
 
 from server.mcp_server import run_server
 

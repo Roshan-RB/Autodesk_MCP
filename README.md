@@ -1,115 +1,99 @@
-# Autodesk Alias API - MCP Server
+# Autodesk Alias API MCP Server
 
-An MCP (Model Context Protocol) server that gives AI assistants searchable access to the **Autodesk Alias API** documentation — right inside tools like Claude Desktop, Cursor, or any MCP-compatible client.
+An MCP server that gives coding agents searchable access to the Autodesk Alias API documentation stored in `data/docs_tavily`.
 
-> ⚠️ **Disclaimer:** This is an unofficial, community-built project. It is not affiliated with, endorsed by, or supported by Autodesk Inc.
+This repo now has one active server:
+- `C:\Thesis\Roshan_Projects\Autodesk_MCP\server\mcp_server.py`
+- `C:\Thesis\Roshan_Projects\Autodesk_MCP\run_server.py`
 
----
+Older server variants were moved out of the active path into `C:\Thesis\Roshan_Projects\Autodesk_MCP\old_trash_files`.
 
-## How It Works
+## What the server does
 
-The Autodesk Alias API documentation was scraped from the official Autodesk help site and stored locally as structured JSON files. At startup the server loads all **231 documentation pages**, strips unnecessary data to save memory, and builds a **BM25 search index** for fast, relevance-ranked retrieval.
+At startup the server:
+- loads the Tavily-scraped Alias docs
+- builds runtime section-aware chunks from each page
+- derives metadata such as headings, code-block counts, and parent-page info
+- builds a chunk-level BM25 index for retrieval
 
----
+The goal is not generic docs hosting. The goal is to help coding agents retrieve the right Autodesk Alias API guidance and code examples while building plug-ins.
 
-## Available Tools
+## Active tools
 
-The server exposes **four tools**, all with Pydantic-validated inputs, tool annotations, and optional JSON output:
+### `search_alias_docs(query, max_results=5, response_format="markdown")`
 
-### `search_alias_docs(query, max_results, response_format)`
+Search the Alias documentation with chunk-aware BM25 ranking.
 
-Search across all documentation using **BM25 (Okapi)** ranking. Results include relevance scores, matched terms, and content snippets. Heuristic boosts are applied for exact title matches and pages with code blocks.
+Features:
+- section-aware retrieval
+- title and section boosts
+- parent-page metadata in results
+- markdown or JSON output
 
+### `get_doc_by_title(title, response_format="markdown")`
+
+Return the full content of a documentation page by title or partial title.
+
+### `list_available_docs(response_format="markdown")`
+
+List all available documentation pages grouped into:
+- class reference
+- guides and concepts
+
+### `get_code_examples(topic, max_results=5, response_format="markdown")`
+
+Search only code-bearing chunks and return code-centered excerpts. This is the most useful tool when the agent needs sample plug-in patterns.
+
+## Data source
+
+The active dataset is:
+- `C:\Thesis\Roshan_Projects\Autodesk_MCP\data\docs_tavily`
+
+## Quick start
+
+1. Install dependencies
+
+```bash
+pip install -r requirements.txt
 ```
-Example: search_alias_docs("create NURBS surface")
-Example: search_alias_docs("AlCurve", response_format="json")
+
+2. Run the server
+
+```bash
+python run_server.py
 ```
 
-### `get_doc_by_title(title)`
+3. Test it locally
 
-Retrieve the **full content** of a documentation page by its title (partial match supported). Returns title suggestions if no match is found.
-
-```
-Example: get_doc_by_title("AlCurve")
+```bash
+python test_server.py
 ```
 
-### `list_available_docs(limit, offset, category, response_format)`
+4. Inspect it with MCP Inspector
 
-Paginated listing of all documentation pages. Supports filtering by category (`class` for API reference, `guide` for tutorials/examples) and returns pagination metadata (`has_more`, `next_offset`).
-
-```
-Example: list_available_docs(category="class", limit=20)
-Example: list_available_docs(offset=30, response_format="json")
+```bash
+npx @modelcontextprotocol/inspector --config .\\inspector.json --server autodesk-alias-docs
 ```
 
-### `get_code_examples(topic, max_results, response_format)`
+## MCP client config example
 
-Find documentation pages that contain **code examples** for a given topic. Filters search results to only pages with code blocks — ideal for finding sample plug-ins and API usage patterns.
-
+```json
+{
+  "mcpServers": {
+    "autodesk-alias-docs": {
+      "command": "/path/to/Autodesk_MCP/venv/Scripts/python.exe",
+      "args": ["/path/to/Autodesk_MCP/run_server.py"]
+    }
+  }
+}
 ```
-Example: get_code_examples("plug-in")
-Example: get_code_examples("NURBS", response_format="json")
-```
 
----
+## Notes
 
-## MCP Resources
-
-Two read-only resources for lightweight programmatic access:
-
-- **`docs://index`** — Full JSON index of all pages (title, GUID, URL, has_code, category)
-- **`docs://stats`** — Corpus summary (total pages, class/guide/code counts)
-
----
-
-## Quick Start
-
-1. **Clone & install dependencies**
-
-   ```bash
-   git clone https://github.com/Roshan-RB/Autodesk_MCP.git
-   cd Autodesk_MCP
-   pip install -r requirements.txt
-   ```
-
-2. **Connect to your AI tool** — add the server to your MCP client config:
-
-   ```json
-   {
-     "mcpServers": {
-       "autodesk-alias-docs": {
-         "command": "/path/to/Autodesk_MCP/venv/Scripts/python.exe",
-         "args": ["/path/to/Autodesk_MCP/run_server_v3.py"]
-       }
-     }
-   }
-   ```
-
-   Replace `/path/to/Autodesk_MCP` with your actual installation path.
-
----
-
-## Documentation Coverage
-
-The scraped dataset covers **231 pages** including:
-
-- **Class Reference** — AlCurve, AlSurface, AlDagNode, AlUniverse, and 100+ more
-- **Plugin Development** — Momentary, Continuous, and Command History plugins
-- **API Examples** — Complete code examples with explanations
-- **Implementation Guides** — Compiling, linking, and setting up plugins
-
----
-
-## What's Next
-
-- **Semantic Retrieval** — Augmenting BM25 with embedding-based search for better context-aware results
-- **Context-Based Tool Selection** — Smarter query routing based on user intent
-- **Plugin Development** — Building real Autodesk Alias plugins powered by this MCP server
-
-Stay tuned — this repo is actively being developed. ⭐
-
----
+- `search_alias_docs(..., response_format="json")` and the other tools support machine-friendly JSON output.
+- The server is optimized for local use during Alias plug-in development.
+- The current retrieval path is stronger than the archived V3 server because it uses section-aware chunking and code-safe chunk handling.
 
 ## License
 
-This project provides a tool to access Autodesk Alias documentation. The documentation content itself is © Autodesk Inc. Please refer to [Autodesk's terms of use](https://www.autodesk.com/company/legal-notices-trademarks) for documentation licensing.
+This project provides tooling around Autodesk Alias documentation. The documentation content itself remains subject to Autodesk's terms.
