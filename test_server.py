@@ -1,8 +1,8 @@
-"""Regression checks for the V2 Autodesk Alias documentation MCP server."""
+"""Regression checks for the Autodesk Alias documentation MCP server."""
 
 import json
 
-from server.mcp_server_v2 import (
+from server.mcp_server import (
     get_chunk_search_index,
     get_code_examples,
     get_doc_by_title,
@@ -164,7 +164,7 @@ def main() -> None:
     test_list_available_docs()
     print("PASS test_list_available_docs")
 
-    print("All V2 regression checks passed.")
+    print("All regression checks passed.")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 """
-Autodesk Alias API Documentation MCP Server (V2)
+Autodesk Alias API Documentation MCP Server
 
 This MCP server provides search capabilities over the Tavily-scraped
 Autodesk Alias API documentation, which includes properly formatted
@@ -1062,7 +1062,7 @@ def _format_doc(doc: dict) -> str:
 
 def run_server():
     """Run the MCP server."""
-    print("Starting Autodesk Alias Documentation MCP Server (V2 - Tavily)...")
+    print("Starting Autodesk Alias Documentation MCP Server...")
     print(f"Documentation directory: {DOCS_DIR}")
 
     docs = get_docs()
