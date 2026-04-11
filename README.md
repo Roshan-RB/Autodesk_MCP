@@ -1,6 +1,6 @@
 # Autodesk Alias API MCP Server
 
-An MCP (Model Context Protocol) server that gives AI assistants and coding agents searchable access to the **Autodesk Alias API** documentation. It can be used with **any MCP-compatible client**, including tools such as Codex, Cursor, Claude Desktop, and similar environments.
+An MCP (Model Context Protocol) server that gives AI assistants and coding agents searchable access to the **Autodesk Alias API** documentation. It can be used with **any MCP-compatible client**, including tools such as Codex, Cursor, Claude Code, and similar environments.
 
 > ⚠️ **Disclaimer:** This is an unofficial, personal project. It is not affiliated with, endorsed by, or supported by Autodesk Inc.
 
@@ -11,6 +11,7 @@ An MCP (Model Context Protocol) server that gives AI assistants and coding agent
 The Autodesk Alias API documentation is scraped from the official Autodesk help site and stored locally as structured JSON files. At startup, the server loads the generated documentation pages, strips unnecessary data to save memory, builds runtime section-aware chunks, derives metadata, and creates a search index for fast relevance-ranked retrieval.
 
 The purpose of this project is straightforward:
+
 - make Autodesk Alias documentation usable from MCP-compatible coding agents
 - help those agents retrieve the right API references and code examples
 - reduce hallucination while building Alias plug-ins
@@ -22,6 +23,7 @@ The purpose of this project is straightforward:
 This repository does **not** ship Autodesk documentation files directly.
 
 Instead, the repo provides:
+
 - the MCP server
 - the scraping script
 - the local workflow to generate your own documentation dataset
@@ -34,10 +36,10 @@ This keeps the project usable without republishing Autodesk documentation conten
 
 The repo includes a scraper script here:
 
-- `C:\Thesis\Roshan_Projects\Autodesk_MCP\scraper_tavily\tavily_scraper.py`
+- `scraper_tavily/tavily_scraper.py`
 
 The current provided scraping workflow uses the Tavily Extract API to retrieve and clean Alias documentation pages.
-It is the re-scraping step used in this project: it expects an input page index and writes the cleaned output dataset used by the server.
+It is the re-scraping step used in this project: it reads a seed index of documentation page URLs and writes the cleaned output dataset used by the server.
 
 ### Basic scrape flow
 
@@ -53,11 +55,13 @@ pip install -r requirements.txt
 set TAVILY_API_KEY=your_api_key_here
 ```
 
-3. Provide the input page index expected by the scraper
+3. Use the provided seed index
 
-The current script reads its source page list from:
+The scraper reads its source page list from:
 
-- `C:\Thesis\Roshan_Projects\Autodesk_MCP\data\docs\index.json`
+- `data/docs/index.json`
+
+This file is a URL manifest only. It contains page GUIDs, titles, and official Autodesk help URLs, not the scraped documentation content.
 
 4. Run a small test scrape first
 
@@ -75,9 +79,10 @@ python scraper_tavily/tavily_scraper.py
 
 After the scrape completes, the generated dataset is written locally under:
 
-- `C:\Thesis\Roshan_Projects\Autodesk_MCP\data\docs_tavily`
+- `data/docs_tavily/`
 
 That folder will contain:
+
 - one JSON file per documentation page
 - an `index.json` summary file for the generated corpus
 
@@ -88,6 +93,7 @@ That generated folder is the dataset the MCP server reads at runtime.
 ## How The Server Works
 
 Once the documentation has been generated locally, the server:
+
 - loads the structured page JSON files
 - builds runtime chunks from each page for better retrieval
 - preserves code blocks for code-focused search
@@ -95,6 +101,7 @@ Once the documentation has been generated locally, the server:
 - builds a BM25-based search index over the chunked content
 
 This makes it easier for coding agents to:
+
 - search by API name
 - search by concept
 - fetch full pages
@@ -165,7 +172,7 @@ cd Autodesk_MCP
 pip install -r requirements.txt
 ```
 
-3. Prepare the input page index used by the scraper at `data/docs/index.json`
+3. Confirm the seed URL index exists at `data/docs/index.json`
 
 4. Generate the local documentation dataset using the provided scraper
 
