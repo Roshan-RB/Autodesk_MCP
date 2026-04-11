@@ -109,11 +109,16 @@ This makes it easier for coding agents to:
 
 ---
 
-## Alias Plug-in Build Prerequisite
+## Plug-in Build Requirements
+
+Building real Alias `.plugin` files requires:
+
+- Microsoft Visual Studio C++ build tools, including `nmake`, `cl.exe`, and `link.exe`
+- access to Autodesk Alias API headers and libraries, typically provided by a local Autodesk Alias installation
 
 This repository does **not** include Autodesk Alias SDK/ODS headers, libraries, or examples.
 
-The MCP server can help coding agents write Alias plug-ins, but compiling those plug-ins requires a local Autodesk Alias installation. Each user should build against the SDK files from their own installed copy of Alias.
+The MCP server can help coding agents write Alias plug-ins, but compiling those plug-ins requires the Alias API files to be available on the build machine.
 
 For example, a local Alias installation may provide files such as:
 
