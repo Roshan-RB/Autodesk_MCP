@@ -1,6 +1,10 @@
 # Scraped documentation (users must run scraper locally)
-data/docs/
+data/docs/*
+!data/docs/
+!data/docs/index.json
 data/docs_tavily/
+
+
 
 # Virtual environment
 venv/

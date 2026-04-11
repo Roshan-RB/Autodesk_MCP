@@ -1,0 +1,1588 @@
+{
+  "source": "tavily_extract_advanced",
+  "total_pages": 225,
+  "pages_scraped": 225,
+  "scraped_at": "2026-02-12T16:15:03.707599+00:00",
+  "pages": [
+    {
+      "guid": "GUID-0278C25C-730E-49AE-9125-EBCCA7434FF5",
+      "title": "Adding your plug-in to the UI",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-0278C25C-730E-49AE-9125-EBCCA7434FF5",
+      "has_code_blocks": false,
+      "content_length": 518
+    },
+    {
+      "guid": "GUID-28B63BF1-7EDE-491E-9983-1F70AB0446A4",
+      "title": "Momentary, Continuous and History plug-ins",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-28B63BF1-7EDE-491E-9983-1F70AB0446A4",
+      "has_code_blocks": false,
+      "content_length": 4927
+    },
+    {
+      "guid": "GUID-7EAE78D4-BAF9-40D3-AB9F-ED238F4620B3",
+      "title": "Attaching a plug-in to a menu or palette",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-7EAE78D4-BAF9-40D3-AB9F-ED238F4620B3",
+      "has_code_blocks": true,
+      "content_length": 3155
+    },
+    {
+      "guid": "GUID-77E500A9-369A-4604-BD8F-3F9202B95204",
+      "title": "Menu and palette IDs for attaching a plug-in",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-77E500A9-369A-4604-BD8F-3F9202B95204",
+      "has_code_blocks": false,
+      "content_length": 5538
+    },
+    {
+      "guid": "GUID-3FFAA143-D2E0-4552-902A-9A712BFE719F",
+      "title": "Building Options Boxes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-3FFAA143-D2E0-4552-902A-9A712BFE719F",
+      "has_code_blocks": false,
+      "content_length": 830
+    },
+    {
+      "guid": "GUID-D54371CB-AB5E-49BD-A208-FAB097A0DDC6",
+      "title": "Building Dynamic Editors using the AlEditor class",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-D54371CB-AB5E-49BD-A208-FAB097A0DDC6",
+      "has_code_blocks": true,
+      "content_length": 2719
+    },
+    {
+      "guid": "GUID-6EA6E053-0056-42D1-9C97-20EF291C5149",
+      "title": "Native Platform Editors",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-6EA6E053-0056-42D1-9C97-20EF291C5149",
+      "has_code_blocks": false,
+      "content_length": 330
+    },
+    {
+      "guid": "GUID-95ED59D1-BB26-4254-925B-C36174C9799C",
+      "title": "Debugging a plug-in in Windows",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-95ED59D1-BB26-4254-925B-C36174C9799C",
+      "has_code_blocks": false,
+      "content_length": 781
+    },
+    {
+      "guid": "GUID-F7E01A0E-771C-4FED-8362-EBC1E6CE79A1",
+      "title": "Building the included examples",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-F7E01A0E-771C-4FED-8362-EBC1E6CE79A1",
+      "has_code_blocks": false,
+      "content_length": 420
+    },
+    {
+      "guid": "GUID-988487C7-35FA-417F-830C-0CEC179B765A",
+      "title": "About the API examples",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-988487C7-35FA-417F-830C-0CEC179B765A",
+      "has_code_blocks": false,
+      "content_length": 1077
+    },
+    {
+      "guid": "GUID-D9756922-3960-4FC6-AFFC-940A0A5E8C7F",
+      "title": "Building the API examples on Windows",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-D9756922-3960-4FC6-AFFC-940A0A5E8C7F",
+      "has_code_blocks": true,
+      "content_length": 2926
+    },
+    {
+      "guid": "GUID-18D99F1C-B68A-4B54-8E3E-7E20D7D534F3",
+      "title": "Class reference",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-18D99F1C-B68A-4B54-8E3E-7E20D7D534F3",
+      "has_code_blocks": false,
+      "content_length": 749
+    },
+    {
+      "guid": "GUID-BE9887F5-AF89-43EF-A64B-5D561AAF3A82",
+      "title": "AlAction – AlBoxLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-BE9887F5-AF89-43EF-A64B-5D561AAF3A82",
+      "has_code_blocks": false,
+      "content_length": 0,
+      "error": "extraction_failed"
+    },
+    {
+      "guid": "GUID-C18F5B51-2EDF-44C3-90DE-8D0850D5BB3A",
+      "title": "AlAction",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-C18F5B51-2EDF-44C3-90DE-8D0850D5BB3A",
+      "has_code_blocks": true,
+      "content_length": 8985
+    },
+    {
+      "guid": "GUID-9E51E7BB-CCB8-4B5E-9B50-21DED01A67D2",
+      "title": "AlAimConstraint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-9E51E7BB-CCB8-4B5E-9B50-21DED01A67D2",
+      "has_code_blocks": true,
+      "content_length": 4828
+    },
+    {
+      "guid": "GUID-9E99BAF7-594A-4933-95F2-38B84AFBD509",
+      "title": "AlAmbientLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-9E99BAF7-594A-4933-95F2-38B84AFBD509",
+      "has_code_blocks": true,
+      "content_length": 3839
+    },
+    {
+      "guid": "GUID-D939ED77-2D64-4684-81D5-B3576B1C6EB8",
+      "title": "AlAngleLocator",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-D939ED77-2D64-4684-81D5-B3576B1C6EB8",
+      "has_code_blocks": true,
+      "content_length": 5656
+    },
+    {
+      "guid": "GUID-8EF752A9-AE46-4669-A427-343725141E64",
+      "title": "AlAnimatable",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-8EF752A9-AE46-4669-A427-343725141E64",
+      "has_code_blocks": true,
+      "content_length": 8318
+    },
+    {
+      "guid": "GUID-1FD06153-CF7A-4293-B9AA-A7179AD29680",
+      "title": "AlAnnotationLocator",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-1FD06153-CF7A-4293-B9AA-A7179AD29680",
+      "has_code_blocks": true,
+      "content_length": 6831
+    },
+    {
+      "guid": "GUID-4F2ECE1C-2EB2-4202-B001-2B619835D2B7",
+      "title": "AlArcAttributes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-4F2ECE1C-2EB2-4202-B001-2B619835D2B7",
+      "has_code_blocks": true,
+      "content_length": 6800
+    },
+    {
+      "guid": "GUID-A8C9F1F4-0189-4CBB-AE98-71BEF575F15E",
+      "title": "AlAreaLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A8C9F1F4-0189-4CBB-AE98-71BEF575F15E",
+      "has_code_blocks": true,
+      "content_length": 6185
+    },
+    {
+      "guid": "GUID-97724A7E-B13B-4647-9041-F994B27F70E9",
+      "title": "AlAttributes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-97724A7E-B13B-4647-9041-F994B27F70E9",
+      "has_code_blocks": true,
+      "content_length": 1610
+    },
+    {
+      "guid": "GUID-A7B4AF66-1E84-45D1-BC33-92E9AEEDFFF6",
+      "title": "AlBlendCurve",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A7B4AF66-1E84-45D1-BC33-92E9AEEDFFF6",
+      "has_code_blocks": true,
+      "content_length": 10653
+    },
+    {
+      "guid": "GUID-9B086A83-9DF0-45DB-9BC2-611CA2DC880B",
+      "title": "AlBlendPoint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-9B086A83-9DF0-45DB-9BC2-611CA2DC880B",
+      "has_code_blocks": true,
+      "content_length": 15905
+    },
+    {
+      "guid": "GUID-63E5C2FF-C7ED-441A-8795-C3E63C4AA8E7",
+      "title": "AlBoxLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-63E5C2FF-C7ED-441A-8795-C3E63C4AA8E7",
+      "has_code_blocks": true,
+      "content_length": 1548
+    },
+    {
+      "guid": "GUID-7EFA5EF7-047D-4290-B1EC-261933289269",
+      "title": "AlCamera – AlCylinderLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-7EFA5EF7-047D-4290-B1EC-261933289269",
+      "has_code_blocks": false,
+      "content_length": 3883
+    },
+    {
+      "guid": "GUID-BABB60D7-3280-4A26-8C1A-CCC049459EAE",
+      "title": "AlCamera",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-BABB60D7-3280-4A26-8C1A-CCC049459EAE",
+      "has_code_blocks": true,
+      "content_length": 7416
+    },
+    {
+      "guid": "GUID-37931509-069F-4BAF-B582-0AE6CD996027",
+      "title": "AlCameraNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-37931509-069F-4BAF-B582-0AE6CD996027",
+      "has_code_blocks": true,
+      "content_length": 3619
+    },
+    {
+      "guid": "GUID-11406AD9-A84E-4E2D-9753-60BCD787DD19",
+      "title": "AlCategory",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-11406AD9-A84E-4E2D-9753-60BCD787DD19",
+      "has_code_blocks": true,
+      "content_length": 6180
+    },
+    {
+      "guid": "GUID-29A502CD-B88A-456E-915A-8D754DD38E24",
+      "title": "AlChannel",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-29A502CD-B88A-456E-915A-8D754DD38E24",
+      "has_code_blocks": true,
+      "content_length": 16134
+    },
+    {
+      "guid": "GUID-20669892-AA16-4249-B4C6-8877A41E0868",
+      "title": "AlCharacter",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-20669892-AA16-4249-B4C6-8877A41E0868",
+      "has_code_blocks": false,
+      "content_length": 0,
+      "error": "extraction_failed"
+    },
+    {
+      "guid": "GUID-AD0E5F3E-BD6D-459D-AFFB-26B59397C204",
+      "title": "AlCharacterSpace",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-AD0E5F3E-BD6D-459D-AFFB-26B59397C204",
+      "has_code_blocks": true,
+      "content_length": 5918
+    },
+    {
+      "guid": "GUID-1EB5689D-87F1-4114-A3CC-9D7ED5B0C7D3",
+      "title": "AlCharSnippet",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-1EB5689D-87F1-4114-A3CC-9D7ED5B0C7D3",
+      "has_code_blocks": true,
+      "content_length": 8437
+    },
+    {
+      "guid": "GUID-615496BA-33CE-4606-A6E1-A84E6EBD9C2F",
+      "title": "AlCharTransition",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-615496BA-33CE-4606-A6E1-A84E6EBD9C2F",
+      "has_code_blocks": true,
+      "content_length": 6597
+    },
+    {
+      "guid": "GUID-FFC38874-CB6E-46AB-BA74-C66615D13113",
+      "title": "AlCloud",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-FFC38874-CB6E-46AB-BA74-C66615D13113",
+      "has_code_blocks": true,
+      "content_length": 15753
+    },
+    {
+      "guid": "GUID-DC134BD2-3276-4CE4-93B2-26BA92EC179F",
+      "title": "AlCluster",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-DC134BD2-3276-4CE4-93B2-26BA92EC179F",
+      "has_code_blocks": true,
+      "content_length": 8446
+    },
+    {
+      "guid": "GUID-8380543A-41BE-4FBD-85CB-F52B0559A373",
+      "title": "AlClusterable",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-8380543A-41BE-4FBD-85CB-F52B0559A373",
+      "has_code_blocks": true,
+      "content_length": 7459
+    },
+    {
+      "guid": "GUID-D95543BB-7FE4-4F5C-B5BE-62DB6BDF666B",
+      "title": "AlClusterMember",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-D95543BB-7FE4-4F5C-B5BE-62DB6BDF666B",
+      "has_code_blocks": true,
+      "content_length": 5474
+    },
+    {
+      "guid": "GUID-69CDC87A-8655-4CA3-B210-60745F760593",
+      "title": "AlClusterNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-69CDC87A-8655-4CA3-B210-60745F760593",
+      "has_code_blocks": true,
+      "content_length": 2336
+    },
+    {
+      "guid": "GUID-185C558D-E81B-4BB7-ADEB-BD4B851A9CD5",
+      "title": "AlClusterPreTMItem",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-185C558D-E81B-4BB7-ADEB-BD4B851A9CD5",
+      "has_code_blocks": true,
+      "content_length": 1041
+    },
+    {
+      "guid": "GUID-3E6C056E-4E96-47A2-9251-68613CF3D89C",
+      "title": "AlCommand",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-3E6C056E-4E96-47A2-9251-68613CF3D89C",
+      "has_code_blocks": true,
+      "content_length": 8776
+    },
+    {
+      "guid": "GUID-CA583C0D-470E-405C-9D4D-C956EC45FAEA",
+      "title": "AlCommandRef",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-CA583C0D-470E-405C-9D4D-C956EC45FAEA",
+      "has_code_blocks": true,
+      "content_length": 9529
+    },
+    {
+      "guid": "GUID-6DEACD31-284E-4901-9846-68FA43A4BC57",
+      "title": "AlConeLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-6DEACD31-284E-4901-9846-68FA43A4BC57",
+      "has_code_blocks": true,
+      "content_length": 3028
+    },
+    {
+      "guid": "GUID-C9D47298-6B3B-4F1E-981D-D386037CB1D1",
+      "title": "AlConicAttributes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-C9D47298-6B3B-4F1E-981D-D386037CB1D1",
+      "has_code_blocks": true,
+      "content_length": 5256
+    },
+    {
+      "guid": "GUID-453D3694-A0BC-4A4D-8D91-66F8CCC510E3",
+      "title": "AlConstraint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-453D3694-A0BC-4A4D-8D91-66F8CCC510E3",
+      "has_code_blocks": true,
+      "content_length": 4678
+    },
+    {
+      "guid": "GUID-05ABF59B-9641-42D5-86B0-5CF04520DF52",
+      "title": "AlConstructionEntity",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-05ABF59B-9641-42D5-86B0-5CF04520DF52",
+      "has_code_blocks": true,
+      "content_length": 4588
+    },
+    {
+      "guid": "GUID-87BCF2CB-057E-481C-82B9-E36654C9FBEE",
+      "title": "AlConstructionPlane",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-87BCF2CB-057E-481C-82B9-E36654C9FBEE",
+      "has_code_blocks": true,
+      "content_length": 7467
+    },
+    {
+      "guid": "GUID-A1FF52E6-F6A1-48ED-9E8E-0B40DB72BE84",
+      "title": "AlConstructionVector",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A1FF52E6-F6A1-48ED-9E8E-0B40DB72BE84",
+      "has_code_blocks": true,
+      "content_length": 3934
+    },
+    {
+      "guid": "GUID-7B64A551-CD59-4D0C-8B5C-34A32B050AA1",
+      "title": "AlCursor",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-7B64A551-CD59-4D0C-8B5C-34A32B050AA1",
+      "has_code_blocks": true,
+      "content_length": 1434
+    },
+    {
+      "guid": "GUID-DE85A872-16E9-4921-BF4E-2D117B228E8E",
+      "title": "AlCurve",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-DE85A872-16E9-4921-BF4E-2D117B228E8E",
+      "has_code_blocks": false,
+      "content_length": 0,
+      "error": "extraction_failed"
+    },
+    {
+      "guid": "GUID-02DE0F05-8AF3-41C4-AECB-C0354A0B1780",
+      "title": "AlCurveAttributes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-02DE0F05-8AF3-41C4-AECB-C0354A0B1780",
+      "has_code_blocks": true,
+      "content_length": 4690
+    },
+    {
+      "guid": "GUID-A1D67543-C30C-42C5-931D-580CEF6EF4A7",
+      "title": "AlCurveCV",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A1D67543-C30C-42C5-931D-580CEF6EF4A7",
+      "has_code_blocks": true,
+      "content_length": 14217
+    },
+    {
+      "guid": "GUID-969FA9CC-623C-423B-A66F-4D51B7EF4E2E",
+      "title": "AlCurvePoint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-969FA9CC-623C-423B-A66F-4D51B7EF4E2E",
+      "has_code_blocks": true,
+      "content_length": 5374
+    },
+    {
+      "guid": "GUID-A92B73AE-4FF6-4272-9DE2-D4A7FAE5C64C",
+      "title": "AlCurveNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A92B73AE-4FF6-4272-9DE2-D4A7FAE5C64C",
+      "has_code_blocks": true,
+      "content_length": 6146
+    },
+    {
+      "guid": "GUID-3196B3E6-8B9C-4721-AF77-D3BB25FD6AC4",
+      "title": "AlCurveOnSurface",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-3196B3E6-8B9C-4721-AF77-D3BB25FD6AC4",
+      "has_code_blocks": true,
+      "content_length": 21774
+    },
+    {
+      "guid": "GUID-BB6045A8-5B0E-4D8F-BAF9-5DC32223E193",
+      "title": "AlCurveOnSurfacePoint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-BB6045A8-5B0E-4D8F-BAF9-5DC32223E193",
+      "has_code_blocks": true,
+      "content_length": 5603
+    },
+    {
+      "guid": "GUID-5AF9FF3B-6E3D-4E35-8D6B-FC96604E50E8",
+      "title": "AlCylinderLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-5AF9FF3B-6E3D-4E35-8D6B-FC96604E50E8",
+      "has_code_blocks": true,
+      "content_length": 2090
+    },
+    {
+      "guid": "GUID-73270D93-7A2B-43DE-957D-C90F409E202B",
+      "title": "AlDagNode – AlLocator",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-73270D93-7A2B-43DE-957D-C90F409E202B",
+      "has_code_blocks": false,
+      "content_length": 3277
+    },
+    {
+      "guid": "GUID-A73FCABA-93DD-468B-8F06-98729CEADDD3",
+      "title": "AlDagNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A73FCABA-93DD-468B-8F06-98729CEADDD3",
+      "has_code_blocks": true,
+      "content_length": 55105
+    },
+    {
+      "guid": "GUID-CDCDB3CC-A594-4E15-A31A-71E93E0691A8",
+      "title": "AlDebug",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-CDCDB3CC-A594-4E15-A31A-71E93E0691A8",
+      "has_code_blocks": true,
+      "content_length": 6821
+    },
+    {
+      "guid": "GUID-015080E0-CC64-4ABF-929B-3C09C8D62CC0",
+      "title": "AlDeviationLocator",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-015080E0-CC64-4ABF-929B-3C09C8D62CC0",
+      "has_code_blocks": true,
+      "content_length": 10208
+    },
+    {
+      "guid": "GUID-2D2309D7-80A2-42F4-9BF9-5214E8618BF2",
+      "title": "AlDirectionLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-2D2309D7-80A2-42F4-9BF9-5214E8618BF2",
+      "has_code_blocks": true,
+      "content_length": 3876
+    },
+    {
+      "guid": "GUID-9029B29A-FAE4-410A-AB1A-D0C5A6C10BF2",
+      "title": "AlDistanceLocator",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-9029B29A-FAE4-410A-AB1A-D0C5A6C10BF2",
+      "has_code_blocks": true,
+      "content_length": 5333
+    },
+    {
+      "guid": "GUID-A2BC2544-C9D6-4907-8891-C5EDA5AFA026",
+      "title": "AlEditor",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A2BC2544-C9D6-4907-8891-C5EDA5AFA026",
+      "has_code_blocks": true,
+      "content_length": 22163
+    },
+    {
+      "guid": "GUID-5577B762-DC4B-49FE-A103-4B5A20AC05A7",
+      "title": "AlEnvironment",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-5577B762-DC4B-49FE-A103-4B5A20AC05A7",
+      "has_code_blocks": true,
+      "content_length": 10807
+    },
+    {
+      "guid": "GUID-1671CC74-5E77-4824-9A92-569B9C6788AD",
+      "title": "AlFace",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-1671CC74-5E77-4824-9A92-569B9C6788AD",
+      "has_code_blocks": true,
+      "content_length": 8542
+    },
+    {
+      "guid": "GUID-B2E9C5F8-28C9-41E8-A07D-184B284EED10",
+      "title": "AlFaceNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-B2E9C5F8-28C9-41E8-A07D-184B284EED10",
+      "has_code_blocks": true,
+      "content_length": 5874
+    },
+    {
+      "guid": "GUID-F9F72164-425E-4CDE-9728-CE2D7734480A",
+      "title": "AlFunction",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-F9F72164-425E-4CDE-9728-CE2D7734480A",
+      "has_code_blocks": true,
+      "content_length": 24127
+    },
+    {
+      "guid": "GUID-6081C689-954F-495D-B3FB-051B18381D53",
+      "title": "AlFunctionHandle",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-6081C689-954F-495D-B3FB-051B18381D53",
+      "has_code_blocks": true,
+      "content_length": 11525
+    },
+    {
+      "guid": "GUID-968D4A21-1DFA-470E-A512-2B0655328E7F",
+      "title": "AlGroupNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-968D4A21-1DFA-470E-A512-2B0655328E7F",
+      "has_code_blocks": true,
+      "content_length": 22835
+    },
+    {
+      "guid": "GUID-999A91F7-A3BB-4602-A9E3-D33F8326270F",
+      "title": "AlIKHandleNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-999A91F7-A3BB-4602-A9E3-D33F8326270F",
+      "has_code_blocks": true,
+      "content_length": 2847
+    },
+    {
+      "guid": "GUID-CA4D29F6-188A-4160-8EB6-9B9BBCC94983",
+      "title": "AlIntersect",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-CA4D29F6-188A-4160-8EB6-9B9BBCC94983",
+      "has_code_blocks": true,
+      "content_length": 7760
+    },
+    {
+      "guid": "GUID-68F9C442-24A5-47D2-A989-B93F9DA06922",
+      "title": "AlIterator",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-68F9C442-24A5-47D2-A989-B93F9DA06922",
+      "has_code_blocks": true,
+      "content_length": 1873
+    },
+    {
+      "guid": "GUID-6C5F6DD7-EDB4-484E-9937-C85B0BB40B2D",
+      "title": "AlJoint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-6C5F6DD7-EDB4-484E-9937-C85B0BB40B2D",
+      "has_code_blocks": true,
+      "content_length": 20320
+    },
+    {
+      "guid": "GUID-83D78F95-3A63-4F03-8E05-60D86806613B",
+      "title": "AlKeyframe",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-83D78F95-3A63-4F03-8E05-60D86806613B",
+      "has_code_blocks": true,
+      "content_length": 11608
+    },
+    {
+      "guid": "GUID-64EF22E6-6786-48D1-8EBF-BB2EA14D733E",
+      "title": "AlLayer",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-64EF22E6-6786-48D1-8EBF-BB2EA14D733E",
+      "has_code_blocks": true,
+      "content_length": 20495
+    },
+    {
+      "guid": "GUID-A5B72D4B-7088-47E2-B0EC-F9008F3EADFD",
+      "title": "AlLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A5B72D4B-7088-47E2-B0EC-F9008F3EADFD",
+      "has_code_blocks": true,
+      "content_length": 12317
+    },
+    {
+      "guid": "GUID-70F5964C-9AD7-4726-BBCD-C496FB6682C7",
+      "title": "AlLightNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-70F5964C-9AD7-4726-BBCD-C496FB6682C7",
+      "has_code_blocks": true,
+      "content_length": 3977
+    },
+    {
+      "guid": "GUID-B36CEB32-1C4E-4F03-9C05-EA17237A95B7",
+      "title": "AlLinearLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-B36CEB32-1C4E-4F03-9C05-EA17237A95B7",
+      "has_code_blocks": true,
+      "content_length": 3638
+    },
+    {
+      "guid": "GUID-01601F7D-22DC-4AD0-BB67-7CFC00B3D805",
+      "title": "AlLineAttributes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-01601F7D-22DC-4AD0-BB67-7CFC00B3D805",
+      "has_code_blocks": true,
+      "content_length": 2974
+    },
+    {
+      "guid": "GUID-5745633A-C54F-4453-ADDC-D14BA6D3AB9B",
+      "title": "AlLinkItem",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-5745633A-C54F-4453-ADDC-D14BA6D3AB9B",
+      "has_code_blocks": false,
+      "content_length": 9475
+    },
+    {
+      "guid": "GUID-39052CB0-1A1F-4C4B-9673-30A891CC815D",
+      "title": "AlList",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-39052CB0-1A1F-4C4B-9673-30A891CC815D",
+      "has_code_blocks": true,
+      "content_length": 1760
+    },
+    {
+      "guid": "GUID-4D06E58B-30AD-49A3-8247-A0951B55EBA8",
+      "title": "AlLiveData",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-4D06E58B-30AD-49A3-8247-A0951B55EBA8",
+      "has_code_blocks": true,
+      "content_length": 11269
+    },
+    {
+      "guid": "GUID-72E3883D-2044-4FCA-B475-B348DB5FB61F",
+      "title": "AlLocator",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-72E3883D-2044-4FCA-B475-B348DB5FB61F",
+      "has_code_blocks": true,
+      "content_length": 3743
+    },
+    {
+      "guid": "GUID-C7805476-FC10-46AE-BC3F-FE0C65F09910",
+      "title": "AlMappedFieldItem – AlRevSurfAttributes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-C7805476-FC10-46AE-BC3F-FE0C65F09910",
+      "has_code_blocks": false,
+      "content_length": 4382
+    },
+    {
+      "guid": "GUID-DE60BCAB-52FC-4719-8E8D-C6068FC14D11",
+      "title": "AlMappedFieldItem",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-DE60BCAB-52FC-4719-8E8D-C6068FC14D11",
+      "has_code_blocks": true,
+      "content_length": 1438
+    },
+    {
+      "guid": "GUID-F0E9417F-E219-49A9-BF53-672D50B5A084",
+      "title": "AlMeasure",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-F0E9417F-E219-49A9-BF53-672D50B5A084",
+      "has_code_blocks": true,
+      "content_length": 6186
+    },
+    {
+      "guid": "GUID-57370B6A-6E1C-45E1-B8D7-F89F51E49525",
+      "title": "AlMesh",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-57370B6A-6E1C-45E1-B8D7-F89F51E49525",
+      "has_code_blocks": true,
+      "content_length": 14256
+    },
+    {
+      "guid": "GUID-BDD1AEE0-1CBB-49A6-9A2B-0EF3CAFB391A",
+      "title": "AlMeshNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-BDD1AEE0-1CBB-49A6-9A2B-0EF3CAFB391A",
+      "has_code_blocks": true,
+      "content_length": 1557
+    },
+    {
+      "guid": "GUID-9870A2C4-9459-4101-B49D-DFFAE04C9D14",
+      "title": "AlMessage",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-9870A2C4-9459-4101-B49D-DFFAE04C9D14",
+      "has_code_blocks": true,
+      "content_length": 17783
+    },
+    {
+      "guid": "GUID-06DF71BA-33E2-4213-B0B2-9BF579AFD6F5",
+      "title": "AlMinmaxLocator",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-06DF71BA-33E2-4213-B0B2-9BF579AFD6F5",
+      "has_code_blocks": true,
+      "content_length": 12261
+    },
+    {
+      "guid": "GUID-F12854A4-097E-48FC-A5A1-97D36BEA4FF1",
+      "title": "AlMotionAction",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-F12854A4-097E-48FC-A5A1-97D36BEA4FF1",
+      "has_code_blocks": true,
+      "content_length": 3229
+    },
+    {
+      "guid": "GUID-13A898DA-E599-4C38-8F51-6FB10323598A",
+      "title": "AlNameItem",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-13A898DA-E599-4C38-8F51-6FB10323598A",
+      "has_code_blocks": true,
+      "content_length": 1174
+    },
+    {
+      "guid": "GUID-ABCB3D40-8BB5-488D-B616-C7964A13D3F7",
+      "title": "AlNonAmbientLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-ABCB3D40-8BB5-488D-B616-C7964A13D3F7",
+      "has_code_blocks": true,
+      "content_length": 4209
+    },
+    {
+      "guid": "GUID-3E1BDCA3-62B7-439D-A378-854330085F0B",
+      "title": "AlNotifyDagNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-3E1BDCA3-62B7-439D-A378-854330085F0B",
+      "has_code_blocks": true,
+      "content_length": 2357
+    },
+    {
+      "guid": "GUID-D60A9B2D-D8F7-42BD-B1C7-475A0CA0743E",
+      "title": "AlObject",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-D60A9B2D-D8F7-42BD-B1C7-475A0CA0743E",
+      "has_code_blocks": true,
+      "content_length": 26896
+    },
+    {
+      "guid": "GUID-7643C88D-68A9-4196-9942-C32E231A65D3",
+      "title": "AlObserver",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-7643C88D-68A9-4196-9942-C32E231A65D3",
+      "has_code_blocks": true,
+      "content_length": 3464
+    },
+    {
+      "guid": "GUID-5081F49B-056D-49BA-BDD4-590A646069AC",
+      "title": "AlOrientationConstraint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-5081F49B-056D-49BA-BDD4-590A646069AC",
+      "has_code_blocks": true,
+      "content_length": 7136
+    },
+    {
+      "guid": "GUID-0657EF7A-7E2E-43BE-8E4A-2254C23884B8",
+      "title": "AlParamAction",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-0657EF7A-7E2E-43BE-8E4A-2254C23884B8",
+      "has_code_blocks": true,
+      "content_length": 9851
+    },
+    {
+      "guid": "GUID-98484245-AEB7-49CE-A7C3-2981B9DDD775",
+      "title": "AlPerformance",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-98484245-AEB7-49CE-A7C3-2981B9DDD775",
+      "has_code_blocks": false,
+      "content_length": 14892
+    },
+    {
+      "guid": "GUID-76635A9F-3A66-4588-88E5-5591E80337F0",
+      "title": "AlPersistentID",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-76635A9F-3A66-4588-88E5-5591E80337F0",
+      "has_code_blocks": false,
+      "content_length": 2965
+    },
+    {
+      "guid": "GUID-16D19A6D-8F61-4EEA-A4DC-3A00AD742A0B",
+      "title": "AlPerspectiveCamera",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-16D19A6D-8F61-4EEA-A4DC-3A00AD742A0B",
+      "has_code_blocks": false,
+      "content_length": 19783
+    },
+    {
+      "guid": "GUID-27176317-6F1A-4886-B673-133D9A0C2EC3",
+      "title": "AlPickable",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-27176317-6F1A-4886-B673-133D9A0C2EC3",
+      "has_code_blocks": true,
+      "content_length": 2083
+    },
+    {
+      "guid": "GUID-EB08388D-327F-44E0-BCB7-F561831D1859",
+      "title": "AlPickList",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-EB08388D-327F-44E0-BCB7-F561831D1859",
+      "has_code_blocks": true,
+      "content_length": 13460
+    },
+    {
+      "guid": "GUID-BF13E2B3-3D32-4CD4-9FF5-3BD3024E5BA7",
+      "title": "AlPixFile",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-BF13E2B3-3D32-4CD4-9FF5-3BD3024E5BA7",
+      "has_code_blocks": false,
+      "content_length": 3695
+    },
+    {
+      "guid": "GUID-04E6258E-D6B7-44A1-99DA-CFC36DCAF411",
+      "title": "AlPlaneAttributes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-04E6258E-D6B7-44A1-99DA-CFC36DCAF411",
+      "has_code_blocks": false,
+      "content_length": 2887
+    },
+    {
+      "guid": "GUID-CB7FA9B2-A448-4D9B-A15E-86A0C3555EE9",
+      "title": "AlPlayBack",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-CB7FA9B2-A448-4D9B-A15E-86A0C3555EE9",
+      "has_code_blocks": true,
+      "content_length": 4063
+    },
+    {
+      "guid": "GUID-D57711C2-C62B-47F1-860C-7079A794F96E",
+      "title": "AlPlayFrame",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-D57711C2-C62B-47F1-860C-7079A794F96E",
+      "has_code_blocks": true,
+      "content_length": 3744
+    },
+    {
+      "guid": "GUID-E36E00FE-3F2D-41C7-887E-B9C6B12B95BF",
+      "title": "AlPointConstraint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-E36E00FE-3F2D-41C7-887E-B9C6B12B95BF",
+      "has_code_blocks": false,
+      "content_length": 3654
+    },
+    {
+      "guid": "GUID-67B62531-98D3-4222-9B99-201A7A3BDCBC",
+      "title": "AlPointLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-67B62531-98D3-4222-9B99-201A7A3BDCBC",
+      "has_code_blocks": false,
+      "content_length": 1702
+    },
+    {
+      "guid": "GUID-E54D3BE3-6209-43DD-89B0-A553F566F10D",
+      "title": "AlPoint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-E54D3BE3-6209-43DD-89B0-A553F566F10D",
+      "has_code_blocks": true,
+      "content_length": 1095
+    },
+    {
+      "guid": "GUID-497930AE-11B3-4D8E-878B-2E56A9747E75",
+      "title": "AlPrintf",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-497930AE-11B3-4D8E-878B-2E56A9747E75",
+      "has_code_blocks": false,
+      "content_length": 1460
+    },
+    {
+      "guid": "GUID-A81610DC-9DAD-418D-AE3A-5D4631F4790F",
+      "title": "AlProduct",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A81610DC-9DAD-418D-AE3A-5D4631F4790F",
+      "has_code_blocks": true,
+      "content_length": 805
+    },
+    {
+      "guid": "GUID-82094D60-2C9C-4B34-A79B-8C1098A11ED1",
+      "title": "AlRadialLocator",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-82094D60-2C9C-4B34-A79B-8C1098A11ED1",
+      "has_code_blocks": true,
+      "content_length": 6291
+    },
+    {
+      "guid": "GUID-B1895CD7-59C0-4CC9-8D27-B3CF9B86BF48",
+      "title": "AlReferenceFile",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-B1895CD7-59C0-4CC9-8D27-B3CF9B86BF48",
+      "has_code_blocks": true,
+      "content_length": 19814
+    },
+    {
+      "guid": "GUID-DC199332-2A5B-444E-BAAE-345CAFC67C37",
+      "title": "AlReferenceFileSet",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-DC199332-2A5B-444E-BAAE-345CAFC67C37",
+      "has_code_blocks": true,
+      "content_length": 5195
+    },
+    {
+      "guid": "GUID-96E9AAD1-D95B-411A-A44A-61DD4AFE8ACD",
+      "title": "AlRender",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-96E9AAD1-D95B-411A-A44A-61DD4AFE8ACD",
+      "has_code_blocks": true,
+      "content_length": 40238
+    },
+    {
+      "guid": "GUID-F2C42224-D343-4833-84DF-8093694CA994",
+      "title": "AlRetrieve",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-F2C42224-D343-4833-84DF-8093694CA994",
+      "has_code_blocks": false,
+      "content_length": 6593
+    },
+    {
+      "guid": "GUID-20B6D51D-23A7-441A-9D7B-0492D4A723D3",
+      "title": "AlRevSurfAttributes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-20B6D51D-23A7-441A-9D7B-0492D4A723D3",
+      "has_code_blocks": true,
+      "content_length": 1779
+    },
+    {
+      "guid": "GUID-905995B3-347B-4166-8822-B97E7B3DD937",
+      "title": "AlReferenceUpdate",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-905995B3-347B-4166-8822-B97E7B3DD937",
+      "has_code_blocks": false,
+      "content_length": 0,
+      "error": "extraction_failed"
+    },
+    {
+      "guid": "GUID-821BADFE-C0CF-49DD-8336-E15681FA464D",
+      "title": "AlSet – AlXEvents",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-821BADFE-C0CF-49DD-8336-E15681FA464D",
+      "has_code_blocks": false,
+      "content_length": 4673
+    },
+    {
+      "guid": "GUID-3A59D23E-4DEE-430B-B5F2-323CA1948835",
+      "title": "AlSet",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-3A59D23E-4DEE-430B-B5F2-323CA1948835",
+      "has_code_blocks": true,
+      "content_length": 6940
+    },
+    {
+      "guid": "GUID-60CDDB31-FA97-4BAB-AD52-B155ABE2183E",
+      "title": "AlSetMember",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-60CDDB31-FA97-4BAB-AD52-B155ABE2183E",
+      "has_code_blocks": true,
+      "content_length": 3448
+    },
+    {
+      "guid": "GUID-E1BABDF4-0EC1-49DC-ACDD-30C6EA161F03",
+      "title": "AlSettable",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-E1BABDF4-0EC1-49DC-ACDD-30C6EA161F03",
+      "has_code_blocks": true,
+      "content_length": 5383
+    },
+    {
+      "guid": "GUID-B49FFD5F-B11E-47D8-87DF-90F3AE6BF230",
+      "title": "AlShader",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-B49FFD5F-B11E-47D8-87DF-90F3AE6BF230",
+      "has_code_blocks": true,
+      "content_length": 16501
+    },
+    {
+      "guid": "GUID-A929342C-0F23-4B22-9A1C-25ADA4493512",
+      "title": "AlShadingFieldItem",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A929342C-0F23-4B22-9A1C-25ADA4493512",
+      "has_code_blocks": true,
+      "content_length": 1272
+    },
+    {
+      "guid": "GUID-B9419867-AEF6-47E4-8296-00172B2E8C4B",
+      "title": "AlShell",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-B9419867-AEF6-47E4-8296-00172B2E8C4B",
+      "has_code_blocks": true,
+      "content_length": 10278
+    },
+    {
+      "guid": "GUID-01DDBAA4-6663-4FBB-B7B7-5C988B9A36D2",
+      "title": "AlShellNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-01DDBAA4-6663-4FBB-B7B7-5C988B9A36D2",
+      "has_code_blocks": true,
+      "content_length": 1509
+    },
+    {
+      "guid": "GUID-93B71741-E2F8-41BC-AB09-9746A1D891BF",
+      "title": "AlSnap",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-93B71741-E2F8-41BC-AB09-9746A1D891BF",
+      "has_code_blocks": true,
+      "content_length": 3693
+    },
+    {
+      "guid": "GUID-A5F1AD69-E7FD-461A-8757-B528BA4437FA",
+      "title": "AlSpacePoint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A5F1AD69-E7FD-461A-8757-B528BA4437FA",
+      "has_code_blocks": true,
+      "content_length": 2626
+    },
+    {
+      "guid": "GUID-A419877F-CCDB-4896-9423-7405438EEE68",
+      "title": "AlSphereLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A419877F-CCDB-4896-9423-7405438EEE68",
+      "has_code_blocks": true,
+      "content_length": 2118
+    },
+    {
+      "guid": "GUID-77063505-3ACF-4A7C-8123-DD58B5B07400",
+      "title": "AlSpotLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-77063505-3ACF-4A7C-8123-DD58B5B07400",
+      "has_code_blocks": true,
+      "content_length": 13997
+    },
+    {
+      "guid": "GUID-6A4FF3A3-2822-49CB-AC3D-AACF2154C397",
+      "title": "AlStatusHandler",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-6A4FF3A3-2822-49CB-AC3D-AACF2154C397",
+      "has_code_blocks": true,
+      "content_length": 2860
+    },
+    {
+      "guid": "GUID-47617202-4EC2-4BC1-8F72-84FAEF0BE054",
+      "title": "AlSurface",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-47617202-4EC2-4BC1-8F72-84FAEF0BE054",
+      "has_code_blocks": true,
+      "content_length": 71028
+    },
+    {
+      "guid": "GUID-6BC32FFC-50D1-4A30-AA19-CC5EAE279E32",
+      "title": "AlSurfaceCV",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-6BC32FFC-50D1-4A30-AA19-CC5EAE279E32",
+      "has_code_blocks": true,
+      "content_length": 16287
+    },
+    {
+      "guid": "GUID-4DA4C730-925C-4B0F-86A8-93C457824310",
+      "title": "AlSurfacePoint",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-4DA4C730-925C-4B0F-86A8-93C457824310",
+      "has_code_blocks": true,
+      "content_length": 7496
+    },
+    {
+      "guid": "GUID-F77B9ED7-9500-4655-8788-A05BC0B8DB19",
+      "title": "AlSurfaceNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-F77B9ED7-9500-4655-8788-A05BC0B8DB19",
+      "has_code_blocks": true,
+      "content_length": 4540
+    },
+    {
+      "guid": "GUID-6AC1B8B8-ED00-421A-9863-492FB5046881",
+      "title": "AlSubdiv",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-6AC1B8B8-ED00-421A-9863-492FB5046881",
+      "has_code_blocks": true,
+      "content_length": 7232
+    },
+    {
+      "guid": "GUID-BB395C76-227D-4334-AB33-37DBE8FDF5BF",
+      "title": "AlSubdivNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-BB395C76-227D-4334-AB33-37DBE8FDF5BF",
+      "has_code_blocks": true,
+      "content_length": 1660
+    },
+    {
+      "guid": "GUID-95A903A8-1AFF-4FA3-A78A-46FDE60FE756",
+      "title": "AlTesselate",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-95A903A8-1AFF-4FA3-A78A-46FDE60FE756",
+      "has_code_blocks": true,
+      "content_length": 9782
+    },
+    {
+      "guid": "GUID-2503263E-B3EE-40B5-9974-E040E8A478A5",
+      "title": "AlTexture",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-2503263E-B3EE-40B5-9974-E040E8A478A5",
+      "has_code_blocks": true,
+      "content_length": 20464
+    },
+    {
+      "guid": "GUID-3454A4E4-2A9F-4F15-9693-BE2E2F55FC48",
+      "title": "AlTextureNode",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-3454A4E4-2A9F-4F15-9693-BE2E2F55FC48",
+      "has_code_blocks": true,
+      "content_length": 2134
+    },
+    {
+      "guid": "GUID-564577BC-19EC-47B9-BF7F-C7BF41F1E2F2",
+      "title": "AlTM",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-564577BC-19EC-47B9-BF7F-C7BF41F1E2F2",
+      "has_code_blocks": true,
+      "content_length": 14301
+    },
+    {
+      "guid": "GUID-762F70FE-BC24-413C-9F5C-E9EC84B5B749",
+      "title": "AlTorusLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-762F70FE-BC24-413C-9F5C-E9EC84B5B749",
+      "has_code_blocks": true,
+      "content_length": 2852
+    },
+    {
+      "guid": "GUID-A265B0DD-BC5B-4BF7-9455-185107D1D75E",
+      "title": "AlTrimBoundary",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A265B0DD-BC5B-4BF7-9455-185107D1D75E",
+      "has_code_blocks": true,
+      "content_length": 4638
+    },
+    {
+      "guid": "GUID-8BB938D7-B467-451A-A49E-435E5667B2EB",
+      "title": "AlTrimCurve",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-8BB938D7-B467-451A-A49E-435E5667B2EB",
+      "has_code_blocks": true,
+      "content_length": 10046
+    },
+    {
+      "guid": "GUID-EA461F13-0A89-4C03-9E25-DBC38115E857",
+      "title": "AlTrimRegion",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-EA461F13-0A89-4C03-9E25-DBC38115E857",
+      "has_code_blocks": true,
+      "content_length": 16931
+    },
+    {
+      "guid": "GUID-11FEE752-D51A-4B0B-BB04-334FC2AFAED2",
+      "title": "AlUnits",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-11FEE752-D51A-4B0B-BB04-334FC2AFAED2",
+      "has_code_blocks": true,
+      "content_length": 5662
+    },
+    {
+      "guid": "GUID-780C0D3F-69CE-47CA-A11C-4D973F0600E5",
+      "title": "AlUniverse",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-780C0D3F-69CE-47CA-A11C-4D973F0600E5",
+      "has_code_blocks": true,
+      "content_length": 69045
+    },
+    {
+      "guid": "GUID-CF3C5564-A750-42CF-BE51-5038C7758A70",
+      "title": "AlUserCommand",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-CF3C5564-A750-42CF-BE51-5038C7758A70",
+      "has_code_blocks": true,
+      "content_length": 19244
+    },
+    {
+      "guid": "GUID-909E4661-6C5B-4205-9185-F25A7C998568",
+      "title": "AlUserPickItem",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-909E4661-6C5B-4205-9185-F25A7C998568",
+      "has_code_blocks": true,
+      "content_length": 1055
+    },
+    {
+      "guid": "GUID-03770669-6A76-4942-8B6D-C96A0C69CD19",
+      "title": "AlUserPickList",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-03770669-6A76-4942-8B6D-C96A0C69CD19",
+      "has_code_blocks": false,
+      "content_length": 0,
+      "error": "extraction_failed"
+    },
+    {
+      "guid": "GUID-F9E769AC-C584-473F-A526-1BAD769D6ABF",
+      "title": "AlViewFrame",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-F9E769AC-C584-473F-A526-1BAD769D6ABF",
+      "has_code_blocks": true,
+      "content_length": 4657
+    },
+    {
+      "guid": "GUID-63DB4FA7-B8FB-44A9-B2F1-34EEF7A673CE",
+      "title": "AlVolumeLight",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-63DB4FA7-B8FB-44A9-B2F1-34EEF7A673CE",
+      "has_code_blocks": true,
+      "content_length": 16560
+    },
+    {
+      "guid": "GUID-E08208C6-49FB-429A-9628-C55B3B19838D",
+      "title": "AlWindow",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-E08208C6-49FB-429A-9628-C55B3B19838D",
+      "has_code_blocks": true,
+      "content_length": 13058
+    },
+    {
+      "guid": "GUID-2B9E2663-B5EE-4223-BCDF-58A999800D21",
+      "title": "AlXevents",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-2B9E2663-B5EE-4223-BCDF-58A999800D21",
+      "has_code_blocks": true,
+      "content_length": 5846
+    },
+    {
+      "guid": "GUID-B1AE2854-925D-40A9-A1B3-7A771289B8B4",
+      "title": "AlToolMetaData",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-B1AE2854-925D-40A9-A1B3-7A771289B8B4",
+      "has_code_blocks": true,
+      "content_length": 3339
+    },
+    {
+      "guid": "GUID-35821B37-BAAB-4A4A-9147-77C12FA93862",
+      "title": "Compiling and linking",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-35821B37-BAAB-4A4A-9147-77C12FA93862",
+      "has_code_blocks": false,
+      "content_length": 554
+    },
+    {
+      "guid": "GUID-D30582F6-3797-4A81-BCE9-8B7532537B5A",
+      "title": "Files and Directories",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-D30582F6-3797-4A81-BCE9-8B7532537B5A",
+      "has_code_blocks": false,
+      "content_length": 856
+    },
+    {
+      "guid": "GUID-C8D03389-38F0-45FE-9140-62380B65AE87",
+      "title": "Setting the Include Path",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-C8D03389-38F0-45FE-9140-62380B65AE87",
+      "has_code_blocks": false,
+      "content_length": 523
+    },
+    {
+      "guid": "GUID-23493C94-FB0B-49F4-A415-527107646DD5",
+      "title": "Windows development environment requirements",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-23493C94-FB0B-49F4-A415-527107646DD5",
+      "has_code_blocks": false,
+      "content_length": 2459
+    },
+    {
+      "guid": "GUID-ADE8E930-80E7-4B3E-9C08-382919763227",
+      "title": "Implementation Details",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-ADE8E930-80E7-4B3E-9C08-382919763227",
+      "has_code_blocks": false,
+      "content_length": 1437
+    },
+    {
+      "guid": "GUID-A39ED913-0676-4DEC-B345-479D3D6F0566",
+      "title": "Class Hierarchy",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A39ED913-0676-4DEC-B345-479D3D6F0566",
+      "has_code_blocks": false,
+      "content_length": 510
+    },
+    {
+      "guid": "GUID-209A45FB-8CC4-4E30-9E2C-D9D4FEF8000A",
+      "title": "Wrappers",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-209A45FB-8CC4-4E30-9E2C-D9D4FEF8000A",
+      "has_code_blocks": false,
+      "content_length": 1124
+    },
+    {
+      "guid": "GUID-DA893370-FA8F-4380-952B-C5DB571984DA",
+      "title": "Instantiation and Creation",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-DA893370-FA8F-4380-952B-C5DB571984DA",
+      "has_code_blocks": true,
+      "content_length": 1461
+    },
+    {
+      "guid": "GUID-52C1D102-8465-448D-AC89-2AFD1767B7F9",
+      "title": "Safe Type-casting",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-52C1D102-8465-448D-AC89-2AFD1767B7F9",
+      "has_code_blocks": true,
+      "content_length": 1095
+    },
+    {
+      "guid": "GUID-0E12EC25-D2DC-424D-A39B-C8B7C67DC8AE",
+      "title": "Deletion",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-0E12EC25-D2DC-424D-A39B-C8B7C67DC8AE",
+      "has_code_blocks": false,
+      "content_length": 1046
+    },
+    {
+      "guid": "GUID-EB4E8882-8F2A-4E11-A800-46AA8CFF722A",
+      "title": "Core dumps",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-EB4E8882-8F2A-4E11-A800-46AA8CFF722A",
+      "has_code_blocks": false,
+      "content_length": 561
+    },
+    {
+      "guid": "GUID-0D33F7C4-72C7-42BB-8D4F-C1EFD7D40A2B",
+      "title": "Comparing Pointers",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-0D33F7C4-72C7-42BB-8D4F-C1EFD7D40A2B",
+      "has_code_blocks": false,
+      "content_length": 1019
+    },
+    {
+      "guid": "GUID-69CDF6C7-35AD-43A5-896A-6DC1E01C21FC",
+      "title": "Allocation of Input Values",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-69CDF6C7-35AD-43A5-896A-6DC1E01C21FC",
+      "has_code_blocks": false,
+      "content_length": 2231
+    },
+    {
+      "guid": "GUID-1D77DB0C-FE8A-4B52-89D6-6C3624810FCF",
+      "title": "Allocation of Return Values",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-1D77DB0C-FE8A-4B52-89D6-6C3624810FCF",
+      "has_code_blocks": false,
+      "content_length": 2225
+    },
+    {
+      "guid": "GUID-1BB07DAD-279A-4CC0-BA95-60AE3ADB0CB3",
+      "title": "Reserved Types for Blind Data",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-1BB07DAD-279A-4CC0-BA95-60AE3ADB0CB3",
+      "has_code_blocks": false,
+      "content_length": 465
+    },
+    {
+      "guid": "GUID-D5F8BD09-812C-42B8-B110-AE7FF20FB33E",
+      "title": "Limitations",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-D5F8BD09-812C-42B8-B110-AE7FF20FB33E",
+      "has_code_blocks": false,
+      "content_length": 653
+    },
+    {
+      "guid": "GUID-8E6E4C54-3D2B-4EEF-B903-D2368FFD1B8E",
+      "title": "Introduction",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-8E6E4C54-3D2B-4EEF-B903-D2368FFD1B8E",
+      "has_code_blocks": false,
+      "content_length": 1104
+    },
+    {
+      "guid": "GUID-87FF3214-4B1B-4631-8804-A145CF39306E",
+      "title": "What is the API?",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-87FF3214-4B1B-4631-8804-A145CF39306E",
+      "has_code_blocks": false,
+      "content_length": 1296
+    },
+    {
+      "guid": "GUID-E90330D2-0777-4D65-821B-B3E1C1F74F9A",
+      "title": "What Can the API Do?",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-E90330D2-0777-4D65-821B-B3E1C1F74F9A",
+      "has_code_blocks": false,
+      "content_length": 608
+    },
+    {
+      "guid": "GUID-39C4465A-E181-4663-945C-859CCE7C423D",
+      "title": "What Can’t the API Do?",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-39C4465A-E181-4663-945C-859CCE7C423D",
+      "has_code_blocks": false,
+      "content_length": 376
+    },
+    {
+      "guid": "GUID-3A8E451E-F937-4637-9976-0FBB383DB46E",
+      "title": "Who needs OpenModel?",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-3A8E451E-F937-4637-9976-0FBB383DB46E",
+      "has_code_blocks": false,
+      "content_length": 841
+    },
+    {
+      "guid": "GUID-4B3BC037-F688-4090-B486-DAD8FA0DB8C9",
+      "title": "Who Needs OpenAlias?",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-4B3BC037-F688-4090-B486-DAD8FA0DB8C9",
+      "has_code_blocks": false,
+      "content_length": 466
+    },
+    {
+      "guid": "GUID-9712FAE2-6ABC-44A6-8A5B-FE07B8E8FA63",
+      "title": "OpenModel versus OpenAlias",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-9712FAE2-6ABC-44A6-8A5B-FE07B8E8FA63",
+      "has_code_blocks": false,
+      "content_length": 918
+    },
+    {
+      "guid": "GUID-F055FFAA-9AE5-4D0E-A5B9-4A49F1B4C81F",
+      "title": "Where do I start?",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-F055FFAA-9AE5-4D0E-A5B9-4A49F1B4C81F",
+      "has_code_blocks": false,
+      "content_length": 490
+    },
+    {
+      "guid": "GUID-5975AA2A-3762-4C7B-B6AB-07C8AA558FD6",
+      "title": "How to Use this Document",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-5975AA2A-3762-4C7B-B6AB-07C8AA558FD6",
+      "has_code_blocks": false,
+      "content_length": 856
+    },
+    {
+      "guid": "GUID-33D9BB21-750B-4EE0-AFC6-9D617DA6B900",
+      "title": "Plug-in API Examples",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-33D9BB21-750B-4EE0-AFC6-9D617DA6B900",
+      "has_code_blocks": false,
+      "content_length": 713
+    },
+    {
+      "guid": "GUID-7EBB4B3A-1FE6-4369-B4B9-55D290FBFB5B",
+      "title": "Momentary plug-in example",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-7EBB4B3A-1FE6-4369-B4B9-55D290FBFB5B",
+      "has_code_blocks": true,
+      "content_length": 5005
+    },
+    {
+      "guid": "GUID-6B1786DF-54D1-47D0-BDCC-8D9AA547A160",
+      "title": "Continuous plug-in example",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-6B1786DF-54D1-47D0-BDCC-8D9AA547A160",
+      "has_code_blocks": true,
+      "content_length": 3880
+    },
+    {
+      "guid": "GUID-02212138-2FC6-4235-9A09-0B10591708A1",
+      "title": "Command History example",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-02212138-2FC6-4235-9A09-0B10591708A1",
+      "has_code_blocks": false,
+      "content_length": 2632
+    },
+    {
+      "guid": "GUID-5B677A32-68FF-46CC-81B2-BD47086427AA",
+      "title": "Command history plug-in example",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-5B677A32-68FF-46CC-81B2-BD47086427AA",
+      "has_code_blocks": true,
+      "content_length": 26626
+    },
+    {
+      "guid": "GUID-32C30418-40D4-4A42-BC6F-29B57F7ABBFB",
+      "title": "Reference Data plug-in example",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-32C30418-40D4-4A42-BC6F-29B57F7ABBFB",
+      "has_code_blocks": true,
+      "content_length": 2755
+    },
+    {
+      "guid": "GUID-8C4A6DC6-23E9-499B-B851-D54DB71EC6BA",
+      "title": "Setting up plug-ins",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-8C4A6DC6-23E9-499B-B851-D54DB71EC6BA",
+      "has_code_blocks": false,
+      "content_length": 305
+    },
+    {
+      "guid": "GUID-CFB03E0C-318B-4222-B828-D805DB25885F",
+      "title": "Managing plug-ins",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-CFB03E0C-318B-4222-B828-D805DB25885F",
+      "has_code_blocks": false,
+      "content_length": 1868
+    },
+    {
+      "guid": "GUID-A0BCE367-3331-4517-B6F0-31251AE430CD",
+      "title": "Defining a plug-in",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-A0BCE367-3331-4517-B6F0-31251AE430CD",
+      "has_code_blocks": false,
+      "content_length": 350
+    },
+    {
+      "guid": "GUID-5460D9FC-6C87-473B-93E0-685741BEE1A8",
+      "title": "The universe and its objects",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-5460D9FC-6C87-473B-93E0-685741BEE1A8",
+      "has_code_blocks": false,
+      "content_length": 1177
+    },
+    {
+      "guid": "GUID-0950C2EF-57C1-4034-B48A-D3064DF7962E",
+      "title": "The Universe",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-0950C2EF-57C1-4034-B48A-D3064DF7962E",
+      "has_code_blocks": false,
+      "content_length": 1976
+    },
+    {
+      "guid": "GUID-2AAB739A-3EEF-4F61-9CDF-69E7EC56C60B",
+      "title": "Cameras",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-2AAB739A-3EEF-4F61-9CDF-69E7EC56C60B",
+      "has_code_blocks": false,
+      "content_length": 575
+    },
+    {
+      "guid": "GUID-2680B5FB-EFD4-44DA-9563-330CF3324B7B",
+      "title": "Lights",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-2680B5FB-EFD4-44DA-9563-330CF3324B7B",
+      "has_code_blocks": false,
+      "content_length": 707
+    },
+    {
+      "guid": "GUID-3AFF049F-A297-43E2-B7EB-9B8A9D2C2D92",
+      "title": "Curves and Faces",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-3AFF049F-A297-43E2-B7EB-9B8A9D2C2D92",
+      "has_code_blocks": false,
+      "content_length": 1302
+    },
+    {
+      "guid": "GUID-1A1574AD-ED2C-4E65-854F-3D162220D58F",
+      "title": "Surfaces",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-1A1574AD-ED2C-4E65-854F-3D162220D58F",
+      "has_code_blocks": false,
+      "content_length": 1275
+    },
+    {
+      "guid": "GUID-E47C9DAA-F634-4DF2-BCF6-AD01430AAD87",
+      "title": "Clusters",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-E47C9DAA-F634-4DF2-BCF6-AD01430AAD87",
+      "has_code_blocks": false,
+      "content_length": 781
+    },
+    {
+      "guid": "GUID-22748962-B2E5-4518-B2A0-171230DA986F",
+      "title": "Sets",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-22748962-B2E5-4518-B2A0-171230DA986F",
+      "has_code_blocks": false,
+      "content_length": 654
+    },
+    {
+      "guid": "GUID-6BB96CFB-FE40-48A4-9097-B7CDAA8CE973",
+      "title": "Animation and Rendering",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-6BB96CFB-FE40-48A4-9097-B7CDAA8CE973",
+      "has_code_blocks": false,
+      "content_length": 1594
+    },
+    {
+      "guid": "GUID-ABCE4253-4189-4C12-A1A8-702365BF6ADA",
+      "title": "Shaders and Textures",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-ABCE4253-4189-4C12-A1A8-702365BF6ADA",
+      "has_code_blocks": false,
+      "content_length": 651
+    },
+    {
+      "guid": "GUID-0B0A59C0-B8E5-43DC-8405-30B7DF3B88E8",
+      "title": "Using OpenAlias",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-0B0A59C0-B8E5-43DC-8405-30B7DF3B88E8",
+      "has_code_blocks": false,
+      "content_length": 228
+    },
+    {
+      "guid": "GUID-C72D90C9-90FB-4AB8-8CE7-EB71A6310421",
+      "title": "Disclaimer",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-C72D90C9-90FB-4AB8-8CE7-EB71A6310421",
+      "has_code_blocks": false,
+      "content_length": 1539
+    },
+    {
+      "guid": "GUID-0234ADC6-7937-4C41-A5D9-EE9F5D5A3809",
+      "title": "Using the API",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-0234ADC6-7937-4C41-A5D9-EE9F5D5A3809",
+      "has_code_blocks": false,
+      "content_length": 2529
+    },
+    {
+      "guid": "GUID-ED7180F1-AB7B-468B-B917-EAFCA8621B36",
+      "title": "Sharing Code between OpenModel and OpenAlias",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-ED7180F1-AB7B-468B-B917-EAFCA8621B36",
+      "has_code_blocks": false,
+      "content_length": 721
+    },
+    {
+      "guid": "GUID-621C29F4-FF19-48AC-AB31-068CEF9A3466",
+      "title": "Determining the Position of an Instance",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-621C29F4-FF19-48AC-AB31-068CEF9A3466",
+      "has_code_blocks": false,
+      "content_length": 1247
+    },
+    {
+      "guid": "GUID-E8D752D0-E942-4726-B681-C7C07D44D5F7",
+      "title": "Getting clustered position",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-E8D752D0-E942-4726-B681-C7C07D44D5F7",
+      "has_code_blocks": false,
+      "content_length": 399
+    },
+    {
+      "guid": "GUID-E3B4F86E-39BA-49CC-B5A5-CC2DDAC34B2C",
+      "title": "Using AlUniverse::redrawScreen",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-E3B4F86E-39BA-49CC-B5A5-CC2DDAC34B2C",
+      "has_code_blocks": false,
+      "content_length": 1086
+    },
+    {
+      "guid": "GUID-696AC9FA-D303-4CA7-B3A1-D807F3AD84E4",
+      "title": "Iterating Over Objects",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-696AC9FA-D303-4CA7-B3A1-D807F3AD84E4",
+      "has_code_blocks": true,
+      "content_length": 1521
+    },
+    {
+      "guid": "GUID-0ED55BE7-906F-412E-A5F8-6C09523EC5AF",
+      "title": "Iterators and AlObjects",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-0ED55BE7-906F-412E-A5F8-6C09523EC5AF",
+      "has_code_blocks": true,
+      "content_length": 1560
+    },
+    {
+      "guid": "GUID-B99E8B71-37F9-49BC-87A1-4FFFD21B9EE3",
+      "title": "Cleaning up Lost Wrappers",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-B99E8B71-37F9-49BC-87A1-4FFFD21B9EE3",
+      "has_code_blocks": false,
+      "content_length": 1271
+    },
+    {
+      "guid": "GUID-AF7C993C-3B3E-47CB-B602-132A22559C37",
+      "title": "Invalidating Wrappers",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-AF7C993C-3B3E-47CB-B602-132A22559C37",
+      "has_code_blocks": false,
+      "content_length": 1060
+    },
+    {
+      "guid": "GUID-72037506-7ECB-4984-9F10-8EE221ECF50B",
+      "title": "Wrappers, Destructors, and Deleting Objects",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-72037506-7ECB-4984-9F10-8EE221ECF50B",
+      "has_code_blocks": false,
+      "content_length": 672
+    },
+    {
+      "guid": "GUID-B9AAC27E-7F8E-4530-B695-A4838DE3797B",
+      "title": "Copying Wrappers",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-B9AAC27E-7F8E-4530-B695-A4838DE3797B",
+      "has_code_blocks": false,
+      "content_length": 493
+    },
+    {
+      "guid": "GUID-2C08A820-E780-4B71-8E54-2A323F72CB9F",
+      "title": "How to invoke your OpenModel applications",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-2C08A820-E780-4B71-8E54-2A323F72CB9F",
+      "has_code_blocks": false,
+      "content_length": 448
+    },
+    {
+      "guid": "GUID-BFD361ED-97F6-4CD5-A55A-D06737E954E0",
+      "title": "Receiving Messages",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-BFD361ED-97F6-4CD5-A55A-D06737E954E0",
+      "has_code_blocks": false,
+      "content_length": 735
+    },
+    {
+      "guid": "GUID-53966B28-757A-45FD-AB30-15634EDE18A6",
+      "title": "Picking Objects",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-53966B28-757A-45FD-AB30-15634EDE18A6",
+      "has_code_blocks": false,
+      "content_length": 914
+    },
+    {
+      "guid": "GUID-23EA30ED-D23B-434C-8836-E7274B851FDB",
+      "title": "Setting Light Direction",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-23EA30ED-D23B-434C-8836-E7274B851FDB",
+      "has_code_blocks": false,
+      "content_length": 310
+    },
+    {
+      "guid": "GUID-9CFC52EB-28F3-4280-A6C4-77F34AA79346",
+      "title": "Creating and Deleting Keyframes",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-9CFC52EB-28F3-4280-A6C4-77F34AA79346",
+      "has_code_blocks": false,
+      "content_length": 496
+    },
+    {
+      "guid": "GUID-DC8A2D81-7E67-492E-8EDE-B42BA9DB87E5",
+      "title": "Closed Forms",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-DC8A2D81-7E67-492E-8EDE-B42BA9DB87E5",
+      "has_code_blocks": false,
+      "content_length": 615
+    },
+    {
+      "guid": "GUID-11919FF8-5771-4536-B85E-26435FEC2961",
+      "title": "Detecting the Escape Key",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-11919FF8-5771-4536-B85E-26435FEC2961",
+      "has_code_blocks": false,
+      "content_length": 498
+    },
+    {
+      "guid": "GUID-AC7C3381-3E2B-41D3-8959-3739BC3944F4",
+      "title": "Making your code run faster",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-AC7C3381-3E2B-41D3-8959-3739BC3944F4",
+      "has_code_blocks": false,
+      "content_length": 1280
+    },
+    {
+      "guid": "GUID-F9F036FA-90CD-4BCD-8478-70667585EFAC",
+      "title": "Using view frames",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-F9F036FA-90CD-4BCD-8478-70667585EFAC",
+      "has_code_blocks": true,
+      "content_length": 695
+    },
+    {
+      "guid": "GUID-39AD2DA3-2990-488C-87FE-5C68D77686DC",
+      "title": "Writing a plug-in",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-39AD2DA3-2990-488C-87FE-5C68D77686DC",
+      "has_code_blocks": false,
+      "content_length": 179
+    },
+    {
+      "guid": "GUID-80C67CE1-9F4C-4706-BEC9-A9723BCE513F",
+      "title": "Coding Overview",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-80C67CE1-9F4C-4706-BEC9-A9723BCE513F",
+      "has_code_blocks": true,
+      "content_length": 3266
+    }
+  ]
+}
