@@ -3,6 +3,7 @@ data/docs/*
 !data/docs/
 !data/docs/index.json
 data/docs_tavily/
+data/docs_jina/
 
 
 
@@ -44,8 +45,16 @@ build/
 
 
 mcp-builder/
-.agent/
+.agent/*
+!.agent/
+!.agent/skills/
+!.agent/skills/alias-plugin-dev/
+!.agent/skills/alias-plugin-dev/SKILL.md
 
 old_trash_files/*
 
 alias-plugin/*
+
+experiments/*
+
+Autodesk_Original_Files/*
