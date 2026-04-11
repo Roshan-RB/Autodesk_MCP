@@ -109,6 +109,27 @@ This makes it easier for coding agents to:
 
 ---
 
+## Alias Plug-in Build Prerequisite
+
+This repository does **not** include Autodesk Alias SDK/ODS headers, libraries, or examples.
+
+The MCP server can help coding agents write Alias plug-ins, but compiling those plug-ins requires a local Autodesk Alias installation. Each user should build against the SDK files from their own installed copy of Alias.
+
+For example, a local Alias installation may provide files such as:
+
+- `C:\Program Files\Autodesk\AliasAutoStudio2025.0\ODS\Common\include`
+- `C:\Program Files\Autodesk\AliasAutoStudio2025.0\lib\libAliasCore.lib`
+
+Before compiling a plug-in, set `ALIAS_LOCATION` in the plug-in `Makefile` to your local Alias installation path:
+
+```makefile
+ALIAS_LOCATION=C:\Program Files\Autodesk\AliasAutoStudio2025.0
+```
+
+Do not copy Autodesk SDK/ODS files into this repository unless Autodesk's license explicitly allows redistribution.
+
+---
+
 ## Available Tools
 
 The current server exposes four main tools.
