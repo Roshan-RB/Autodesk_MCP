@@ -6,6 +6,10 @@ An MCP (Model Context Protocol) server that gives AI assistants and coding agent
 
 ---
 
+**Not a developer? That's totally fine.** In short, this tool gives AI assistants (like Claude or Codex) a way to look up the real Autodesk Alias documentation on demand, so instead of guessing or making things up so when you ask them for help building Alias plug-ins, they can actually fetch the right answer in the moment. Think of it less like a textbook and more like giving the AI a direct line to the official docs whenever it needs one.
+
+---
+
 ## What This Project Does
 
 The Autodesk Alias API documentation is scraped from the official Autodesk help site and stored locally as structured JSON files. At startup, the server loads the generated documentation pages, strips unnecessary data to save memory, builds runtime section-aware chunks, derives metadata, and creates a search index for fast relevance-ranked retrieval.
@@ -180,6 +184,17 @@ Examples:
 get_code_examples("plug-in")
 get_code_examples("AlCurve", response_format="json")
 ```
+
+---
+
+> [!TIP]
+> **Building a plug-in? Start with the included skill.**
+> The `.agents/skill.md` file contains a coding agent skill derived from analysing
+> Autodesk's own official default plug-ins. It captures the standard structure,
+> patterns, and conventions used in real Alias plug-ins, so your coding agent
+> doesn't just know the API, it also knows how a well-built plug-in is supposed
+> to look. If you're using an agent like Claude Code or Cursor, point it to this
+> file before you start building.
 
 ---
 
