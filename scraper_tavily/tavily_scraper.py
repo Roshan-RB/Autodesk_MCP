@@ -21,10 +21,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+from dotenv import load_dotenv
 
 # ─── Configuration ───────────────────────────────────────────────────────────
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+load_dotenv(PROJECT_ROOT / ".env")
 INDEX_PATH = PROJECT_ROOT / "data" / "docs" / "index.json"
 OUTPUT_DIR = PROJECT_ROOT / "data" / "docs_tavily"
 
@@ -228,7 +230,7 @@ def get_api_key() -> str:
                 pass
 
     print("ERROR: No Tavily API key found.")
-    print("Set TAVILY_API_KEY environment variable or configure in mcp_config.json")
+    print("Set TAVILY_API_KEY in your shell, .env file, or mcp_config.json")
     sys.exit(1)
 
 

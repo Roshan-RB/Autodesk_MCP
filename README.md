@@ -57,6 +57,26 @@ pip install -r requirements.txt
 
 2. Set your Tavily API key
 
+Recommended: copy the example environment file and add your Tavily API key.
+
+```bash
+cp .env.example .env
+```
+
+On Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Then edit `.env`:
+
+```env
+TAVILY_API_KEY=your_api_key_here
+```
+
+The scraper loads `.env` automatically. You can also set the variable directly in your shell instead.
+
 Command Prompt:
 
 ```bat
