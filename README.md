@@ -6,7 +6,9 @@ An MCP (Model Context Protocol) server that gives AI assistants and coding agent
 
 ---
 
-**Not a developer? That's totally fine.** In short, this tool gives AI assistants (like Claude or Codex) a way to look up the real Autodesk Alias documentation on demand, so instead of guessing or making things up so when you ask them for help building Alias plug-ins, they can actually fetch the right answer in the moment. Think of it less like a textbook and more like giving the AI a direct line to the official docs whenever it needs one.
+> [!NOTE]
+> **Not a developer? That's totally fine.**
+> In short, this tool gives AI assistants (like Claude or Codex) a way to look up the real Autodesk Alias documentation on demand, so instead of guessing or making things up so when you ask them for help building Alias plug-ins, they can actually fetch the right answer in the moment. Think of it less like a textbook and more like giving the AI a direct line to the official docs whenever it needs one.
 
 ---
 
