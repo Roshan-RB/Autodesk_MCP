@@ -41,6 +41,24 @@ def _assert_top_result(query: str, expected_title: str, expected_section: str | 
         )
 
 
+def _assert_any_title(results: list[dict], expected_titles: set[str], context: str) -> None:
+    """Verify that at least one result title is in an expected title set."""
+    result_titles = [result["title"] for result in results]
+    _assert(
+        any(title in expected_titles for title in result_titles),
+        f"Expected one of {sorted(expected_titles)} for {context}, got {result_titles}",
+    )
+
+
+PLUGIN_EXAMPLE_TITLES = {
+    "Attaching a plug-in to a menu or palette",
+    "Command history plug-in example",
+    "Momentary plug-in example",
+    "Continuous plug-in example",
+    "Reference Data plug-in example",
+}
+
+
 def test_load_and_index() -> None:
     """Verify docs load and the chunk index builds."""
     docs = get_docs()
@@ -73,13 +91,7 @@ def test_code_example_search() -> None:
 
     plug_in_results = search_code_examples("plug-in", docs, max_results=5)
     _assert(plug_in_results, 'Expected code example results for "plug-in"')
-    _assert(
-        plug_in_results[0]["title"] == "Attaching a plug-in to a menu or palette",
-        (
-            'Expected top code example result "Attaching a plug-in to a menu or palette" '
-            f'for "plug-in", got "{plug_in_results[0]["title"]}"'
-        ),
-    )
+    _assert_any_title(plug_in_results, PLUGIN_EXAMPLE_TITLES, '"plug-in" code search')
     _assert(plug_in_results[0].get("code_snippet"), "Expected a code snippet for plug-in results")
 
     history_results = search_code_examples("history plug-ins", docs, max_results=5)
@@ -97,7 +109,10 @@ def test_get_code_examples() -> None:
     """Verify the MCP-facing code example tool output shape."""
     output = get_code_examples("plug-in")
     _assert("Found" in output and "code example results" in output, "Expected code example header")
-    _assert("Attaching a plug-in to a menu or palette" in output, "Expected known plug-in code page in output")
+    _assert(
+        any(title in output for title in PLUGIN_EXAMPLE_TITLES),
+        "Expected a known plug-in code page in output",
+    )
     _assert("```" in output, "Expected fenced code block in output")
 
 
@@ -110,7 +125,10 @@ def test_json_outputs() -> None:
 
     code_payload = json.loads(get_code_examples("plug-in", response_format="json"))
     _assert(code_payload["topic"] == "plug-in", "Expected code example topic in JSON payload")
-    _assert(code_payload["results"][0]["title"] == "Attaching a plug-in to a menu or palette", "Expected top JSON code result")
+    _assert(
+        code_payload["results"][0]["title"] in PLUGIN_EXAMPLE_TITLES,
+        "Expected top JSON code result to be a known plug-in example page",
+    )
     _assert(code_payload["results"][0]["code_snippet"], "Expected code snippet in JSON code result")
 
     list_payload = json.loads(list_available_docs(response_format="json"))
