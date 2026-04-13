@@ -1,4 +1,4 @@
-# Autodesk Alias API MCP Server
+# Autodesk Alias Programmer's Interface (API) MCP Server
 
 An MCP (Model Context Protocol) server that gives AI assistants and coding agents searchable access to the **Autodesk Alias API** documentation. It can be used with **any MCP-compatible client**, including tools such as Codex, Cursor, Claude Code, and similar environments.
 
