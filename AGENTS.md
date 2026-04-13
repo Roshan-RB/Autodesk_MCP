@@ -2,11 +2,11 @@
 
 ## Project Structure & Module Organization
 
-This repository contains a Python MCP server for locally scraped Autodesk Alias API documentation. Core server logic lives in `server/mcp_server.py`, with `run_server.py` as the runtime entry point and `main.py` retained for related local workflows. Regression checks are in `test_server.py`. The scraper lives in `scraper_tavily/tavily_scraper.py`; it reads the seed manifest at `data/docs/index.json` and writes generated documentation to `data/docs_tavily/`, which is intentionally ignored. The `.agent/skills/alias-plugin-dev/` skill is tracked; `alias-plugin/`, `experiments/`, `old_trash_files/`, and Autodesk source dumps are local working areas and should not be treated as release artifacts.
+This repository contains a Python MCP server for locally scraped Autodesk Alias Programmers' Interfaces documentation. Core server logic lives in `server/mcp_server.py`, with `run_server.py` as the runtime entry point. Regression checks are in `test_server.py`. The scraper lives in `scraper_tavily/tavily_scraper.py`; it reads the seed manifest at `data/docs/index.json` and writes generated documentation to `data/docs_tavily/`, which is intentionally ignored. The `.agent/skills/alias-plugin-dev/` skill is tracked; `alias-plugin/`, `experiments/`, `old_trash_files/`, and Autodesk source dumps are local working areas and should not be treated as release artifacts.
 
 ## Build, Test, and Development Commands
 
-- `pip install -r requirements.txt`: install MCP, Playwright, and BM25 search dependencies.
+- `pip install -r requirements.txt`: install MCP, requests, and BM25 search dependencies.
 - `python scraper_tavily/tavily_scraper.py --test`: run a small Tavily scrape before generating a full local corpus.
 - `python scraper_tavily/tavily_scraper.py`: generate the local `data/docs_tavily/` dataset.
 - `python run_server.py`: start the MCP server.

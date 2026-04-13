@@ -1,6 +1,6 @@
-# Autodesk Alias Programmer's Interface (API) MCP Server
+# Autodesk Alias Programmers' Interfaces (API) MCP Server
 
-An MCP (Model Context Protocol) server that gives AI assistants and coding agents searchable access to the **Autodesk Alias API** documentation. It can be used with **any MCP-compatible client**, including tools such as Codex, Cursor, Claude Code, and similar environments.
+An MCP (Model Context Protocol) server that gives AI assistants and coding agents searchable access to the **Autodesk Alias Programmers' Interfaces (API)** documentation. It can be used with **any MCP-compatible client**, including tools such as Codex, Cursor, Claude Code, and similar environments.
 
 > ⚠️ **Disclaimer:** This is an unofficial, personal project. It is not affiliated with, endorsed by, or supported by Autodesk Inc.
 
@@ -14,7 +14,7 @@ An MCP (Model Context Protocol) server that gives AI assistants and coding agent
 
 ## What This Project Does
 
-The Autodesk Alias API documentation is scraped from the official Autodesk help site and stored locally as structured JSON files. At startup, the server loads the generated documentation pages, strips unnecessary data to save memory, builds runtime section-aware chunks, derives metadata, and creates a search index for fast relevance-ranked retrieval.
+The Autodesk Alias Programmers' Interfaces documentation is scraped from the official Autodesk help site and stored locally as structured JSON files. At startup, the server loads the generated documentation pages, strips unnecessary data to save memory, builds runtime section-aware chunks, derives metadata, and creates a search index for fast relevance-ranked retrieval.
 
 The purpose of this project is straightforward:
 
@@ -57,8 +57,22 @@ pip install -r requirements.txt
 
 2. Set your Tavily API key
 
-```bash
+Command Prompt:
+
+```bat
 set TAVILY_API_KEY=your_api_key_here
+```
+
+PowerShell:
+
+```powershell
+$env:TAVILY_API_KEY="your_api_key_here"
+```
+
+macOS/Linux:
+
+```bash
+export TAVILY_API_KEY=your_api_key_here
 ```
 
 3. Use the provided seed index
@@ -191,7 +205,7 @@ get_code_examples("AlCurve", response_format="json")
 
 > [!TIP]
 > **Building a plug-in? Start with the included skill.**
-> The `.agents/skill.md` file contains a coding agent skill derived from analysing
+> The `.agent/skills/alias-plugin-dev/SKILL.md` file contains a coding agent skill derived from analysing
 > Autodesk's own official default plug-ins. It captures the standard structure,
 > patterns, and conventions used in real Alias plug-ins, so your coding agent
 > doesn't just know the API, it also knows how a well-built plug-in is supposed
@@ -242,6 +256,8 @@ python test_server.py
 npx @modelcontextprotocol/inspector --config .\inspector.json --server autodesk-alias-docs
 ```
 
+The provided `inspector.json` uses `python run_server.py` and assumes you run the command from the repository root with the required Python environment active. If you prefer using a specific virtual environment, edit `inspector.json` to point to that Python executable.
+
 ---
 
 ## MCP Client Config Example
@@ -250,14 +266,14 @@ npx @modelcontextprotocol/inspector --config .\inspector.json --server autodesk-
 {
   "mcpServers": {
     "autodesk-alias-docs": {
-      "command": "/path/to/Autodesk_MCP/venv/Scripts/python.exe",
-      "args": ["/path/to/Autodesk_MCP/run_server.py"]
+      "command": "python",
+      "args": ["run_server.py"]
     }
   }
 }
 ```
 
-Replace `/path/to/Autodesk_MCP` with your local installation path.
+Run this from the repository root, or replace `python` and `run_server.py` with absolute paths for your local setup.
 
 ---
 

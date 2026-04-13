@@ -1,9 +1,9 @@
 """
-Autodesk Alias API Documentation MCP Server
+Autodesk Alias Programmers' Interfaces Documentation MCP Server
 
 This MCP server provides search capabilities over the Tavily-scraped
-Autodesk Alias API documentation, which includes properly formatted
-code blocks and cleaner content.
+Autodesk Alias Programmers' Interfaces documentation, which includes
+properly formatted code blocks and cleaner content.
 
 Data source: data/docs_tavily/
 """
@@ -832,7 +832,7 @@ def search_alias_docs(
     response_format: Literal["markdown", "json"] = "markdown",
 ) -> str:
     """
-    Search the Autodesk Alias Python API documentation.
+    Search the Autodesk Alias Programmers' Interfaces documentation.
 
     Args:
         query: The search query (e.g., "create NURBS surface", "AlCurve methods")

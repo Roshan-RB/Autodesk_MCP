@@ -1,9 +1,9 @@
 {
   "mcpServers": {
     "autodesk-alias-docs": {
-      "command": "C:/Thesis/Roshan_Projects/Autodesk_MCP/venv/Scripts/python.exe",
+      "command": "python",
       "args": [
-        "C:/Thesis/Roshan_Projects/Autodesk_MCP/run_server.py"
+        "run_server.py"
       ]
     }
   }
