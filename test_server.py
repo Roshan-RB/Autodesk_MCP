@@ -172,6 +172,25 @@ def test_get_code_examples() -> None:
     )
     _assert("```" in output, "Expected fenced code block in output")
 
+    exact_title_output = get_code_examples("Attaching a plug-in to a menu or palette")
+    _assert(
+        "## 1. Attaching a plug-in to a menu or palette [code]" in exact_title_output,
+        "Expected exact page-title query to rank the matching page first",
+    )
+    _assert(
+        'h.installOnMenu( "al_goto", FALSE /* top */ );' in exact_title_output,
+        "Expected exact page-title query to include menu attachment code",
+    )
+    _assert(
+        "Removing the plug-in from the menus at plugin_exit() time:" in exact_title_output,
+        "Expected exact page-title query to include nearby context for later code blocks",
+    )
+
+    momentary_output = get_code_examples("Momentary plug-in example", max_results=1)
+    _assert("## 1. Momentary plug-in example [code]" in momentary_output, "Expected momentary example first")
+    _assert("PLUGINAPI_DECL int plugin_init( const char *dirName )" in momentary_output, "Expected full plugin_init code")
+    _assert("PLUGINAPI_DECL int plugin_exit( void )" in momentary_output, "Expected full plugin_exit code")
+
 
 def test_json_outputs() -> None:
     """Verify the optional JSON response mode for all exposed tools."""
