@@ -129,6 +129,11 @@ That folder will contain:
 
 That generated folder is the dataset the MCP server reads at runtime.
 
+### About the two index files
+
+- `data/docs/index.json` is the committed seed manifest used by the scraper. It contains the page list, titles, GUIDs, and official Autodesk help URLs.
+- `data/docs_tavily/index.json` is generated locally by the scraper. It is the runtime corpus index used by the MCP server and is not committed to the repository.
+
 ---
 
 ## How The Server Works
@@ -178,7 +183,7 @@ Do not copy Autodesk SDK/ODS files into this repository unless Autodesk's licens
 
 ## Available Tools
 
-The current server exposes four main tools.
+The current server exposes five main tools.
 
 ### `search_alias_docs(query, max_results=5, response_format="markdown")`
 
@@ -222,6 +227,27 @@ get_code_examples("plug-in")
 get_code_examples("AlCurve", response_format="json")
 ```
 
+### `query_alias_docs_filesystem(command)`
+
+Run safe read-only shell-like queries against the loaded Alias documentation corpus. This does not execute real shell commands; it only queries a virtual markdown filesystem built from the local docs dataset.
+
+Supported commands:
+
+- `ls`
+- `find`
+- `rg`
+- `head`
+- `tail`
+- `cat`
+
+Examples:
+
+```text
+query_alias_docs_filesystem("rg -n installOnMenu|installOnPalette /")
+query_alias_docs_filesystem("head -40 /attaching-a-plug-in-to-a-menu-or-palette.md")
+query_alias_docs_filesystem("cat /guid/GUID-7EAE78D4-BAF9-40D3-AB9F-ED238F4620B3.md")
+```
+
 ---
 
 > [!TIP]
@@ -250,20 +276,28 @@ cd Autodesk_MCP
 pip install -r requirements.txt
 ```
 
-3. Confirm the seed URL index exists at `data/docs/index.json`
+3. Set your Tavily API key
 
-4. Generate the local documentation dataset using the provided scraper
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` and set:
+
+```env
+TAVILY_API_KEY=your_api_key_here
+```
+
+4. Confirm the seed URL index exists at `data/docs/index.json`
+
+5. Generate the local documentation dataset using the provided scraper
 
 ```bash
 python scraper_tavily/tavily_scraper.py --test
 python scraper_tavily/tavily_scraper.py
 ```
 
-5. Run the MCP server
-
-```bash
-python run_server.py
-```
+A successful full scrape should report roughly 232 scraped pages and 0 failed or empty pages.
 
 6. Run the regression checks
 
@@ -271,7 +305,15 @@ python run_server.py
 python test_server.py
 ```
 
-7. Inspect the server locally with MCP Inspector
+The tests expect the generated corpus at `data/docs_tavily/index.json`.
+
+7. Run the MCP server
+
+```bash
+python run_server.py
+```
+
+8. Inspect the server locally with MCP Inspector
 
 ```bash
 npx @modelcontextprotocol/inspector --config .\inspector.json --server autodesk-alias-docs
