@@ -1,9 +1,12 @@
 """Regression checks for the Autodesk Alias documentation MCP server."""
 
+import asyncio
 import json
 from pathlib import Path
 
 from server.mcp_server import (
+    ALIAS_PLUGIN_DEV_RESOURCE,
+    ALIAS_PLUGIN_DEV_RESOURCE_URI,
     SERVER_INSTRUCTIONS,
     get_chunk_search_index,
     get_code_examples,
@@ -93,6 +96,22 @@ def test_server_instructions() -> None:
     _assert("search_alias_docs" in SERVER_INSTRUCTIONS, "Expected search workflow guidance")
     _assert("get_doc_by_title" in SERVER_INSTRUCTIONS, "Expected full-doc workflow guidance")
     _assert("get_code_examples" in SERVER_INSTRUCTIONS, "Expected code-example workflow guidance")
+
+
+def test_alias_plugin_dev_resource() -> None:
+    """Verify MCP clients can list and read the Alias plug-in primer resource."""
+    resources = asyncio.run(mcp.list_resources())
+    resource_uris = [str(resource.uri) for resource in resources]
+
+    _assert(ALIAS_PLUGIN_DEV_RESOURCE_URI in resource_uris, "Expected Alias plug-in resource to be listed")
+
+    resource_contents = asyncio.run(mcp.read_resource(ALIAS_PLUGIN_DEV_RESOURCE_URI))
+    _assert(len(resource_contents) == 1, "Expected one Alias plug-in resource content item")
+    _assert(resource_contents[0].mime_type == "text/markdown", "Expected markdown resource content")
+    _assert(resource_contents[0].content == ALIAS_PLUGIN_DEV_RESOURCE, "Expected registered resource content")
+    _assert("Alias Plugin Development Primer" in resource_contents[0].content, "Expected primer heading")
+    _assert("plugin_init" in resource_contents[0].content, "Expected plug-in lifecycle guidance")
+    _assert("get_doc_by_title" in resource_contents[0].content, "Expected MCP workflow guidance")
 
 
 def test_load_and_index() -> None:
@@ -274,6 +293,9 @@ def main() -> None:
 
     test_server_instructions()
     print("PASS test_server_instructions")
+
+    test_alias_plugin_dev_resource()
+    print("PASS test_alias_plugin_dev_resource")
 
     test_load_and_index()
     print("PASS test_load_and_index")
