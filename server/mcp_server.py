@@ -44,6 +44,7 @@ def load_documentation() -> list[dict]:
         try:
             with open(json_file, "r", encoding="utf-8") as f:
                 doc = json.load(f)
+                normalize_loaded_doc_content(doc)
                 doc["chunks"] = build_doc_chunks(doc)
                 enrich_doc_metadata(doc)
                 docs.append(doc)
@@ -75,6 +76,95 @@ def get_chunk_search_index(docs: list[dict] | None = None) -> dict:
             docs = get_docs()
         _chunk_search_index_cache = build_chunk_search_index(docs)
     return _chunk_search_index_cache
+
+
+def normalize_loaded_doc_content(doc: dict) -> None:
+    """Clean stale scraped content before it is chunked or returned by tools."""
+    content = doc.get("content", "")
+    raw_content = doc.get("raw_content", "")
+
+    if not _looks_like_autodesk_shell(content):
+        doc["content_cleanup_status"] = "unchanged"
+        return
+
+    cleaned = _extract_actual_doc_content(raw_content or content, doc.get("title", ""))
+    if cleaned:
+        doc["content"] = cleaned
+        doc["content_cleanup_status"] = "cleaned_at_load"
+        return
+
+    doc["content"] = ""
+    doc["content_cleanup_status"] = "no_usable_content"
+
+
+def _looks_like_autodesk_shell(content: str) -> bool:
+    """Detect Autodesk Help navigation/sidebar content in scraped markdown."""
+    if not content:
+        return False
+
+    shell_markers = (
+        "Help Home",
+        "Quick Links",
+        "Alias 2026 Help |",
+        "Alias What's New",
+        "Page Not Found",
+        "Share this page via Email",
+    )
+    return any(marker in content for marker in shell_markers)
+
+
+def _extract_actual_doc_content(content: str, title: str) -> str:
+    """Extract the real documentation body from Autodesk Help page chrome."""
+    if not content or "Page Not Found" in content:
+        return ""
+
+    lines = content.splitlines()
+    start_index = _find_actual_content_start(lines, title)
+    if start_index is None:
+        return ""
+
+    cleaned = "\n".join(lines[start_index:]).strip()
+    cleaned = _strip_doc_footer(cleaned)
+    return cleaned
+
+
+def _find_actual_content_start(lines: list[str], title: str) -> int | None:
+    """Find a real page title heading, ignoring links in navigation trees."""
+    title = title.strip()
+    if not title:
+        return None
+
+    for index, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped in {title, f"# {title}", f"## {title}", f"### {title}"}:
+            return index
+
+        if index + 1 < len(lines) and stripped == title:
+            underline = lines[index + 1].strip()
+            if re.fullmatch(r"[=-]{3,}", underline):
+                return index
+
+    return None
+
+
+def _strip_doc_footer(content: str) -> str:
+    """Drop Autodesk Help footer/share boilerplate after the useful body."""
+    footer_markers = (
+        "\nShare\n",
+        "\n*   [Email](mailto:",
+        "\nWas this information helpful?",
+        "\n### Was this information helpful?",
+        "\nExcept where otherwise noted, this work is licensed",
+        "\n[](https://creativecommons.org/",
+        "\nPrivacy Statement",
+        "\nLegal Notices & Trademarks",
+    )
+
+    for marker in footer_markers:
+        index = content.find(marker)
+        if index > 0:
+            return content[:index].rstrip()
+    return content
 
 
 def build_doc_chunks(doc: dict) -> list[dict]:
@@ -782,6 +872,7 @@ def _serialize_doc_detail(doc: dict) -> dict:
     return {
         **_serialize_doc_summary(doc),
         "content_length": doc.get("content_length", len(doc.get("content", ""))),
+        "content_cleanup_status": doc.get("content_cleanup_status"),
         "headings": doc.get("headings", []),
         "content": doc.get("content", ""),
     }
@@ -833,7 +924,7 @@ def _format_doc_markdown(doc: dict) -> str:
     if doc.get("has_code_blocks"):
         output += "**Contains code examples:** Yes\n"
     output += "\n"
-    output += doc.get("content", "No content available.")
+    output += doc.get("content") or "No usable documentation content available for this page."
     return output
 
 

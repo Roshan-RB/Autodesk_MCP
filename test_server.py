@@ -9,6 +9,7 @@ from server.mcp_server import (
     get_doc_by_title,
     get_docs,
     list_available_docs,
+    normalize_loaded_doc_content,
     search_alias_docs,
     search_code_examples,
     search_docs,
@@ -109,6 +110,38 @@ def test_get_doc_by_title() -> None:
     _assert("Interface to Alias NURBS curves geometry." in output, "Expected AlCurve content in output")
 
 
+def test_loaded_doc_content_cleanup() -> None:
+    """Verify stale scraped page chrome is removed before docs are indexed."""
+    doc = {
+        "title": "AlModelTool",
+        "content": (
+            "Alias 2026 Help | AlModelTool | Autodesk\n"
+            "===============\n\n"
+            "*   [Help Home](https://help.autodesk.com/view/ALIAS/2026/ENU/)\n"
+            "Quick Links\n"
+        ),
+        "raw_content": (
+            "Alias 2026 Help | AlModelTool | Autodesk\n"
+            "===============\n\n"
+            "*   [Help Home](https://help.autodesk.com/view/ALIAS/2026/ENU/)\n"
+            "Quick Links\n\n"
+            "Share\n\n"
+            "AlModelTool\n"
+            "===========\n\n"
+            "Base class for all model tools.\n\n"
+            "Share\n\n"
+            "*   [Email](mailto:test)\n"
+        ),
+    }
+
+    normalize_loaded_doc_content(doc)
+
+    _assert(doc["content"].startswith("AlModelTool"), "Expected cleaned content to start at real page heading")
+    _assert("Base class for all model tools." in doc["content"], "Expected useful body content after cleanup")
+    _assert("Help Home" not in doc["content"], "Expected Help Home navigation to be removed")
+    _assert("Quick Links" not in doc["content"], "Expected Quick Links navigation to be removed")
+
+
 def test_code_example_search() -> None:
     """Verify the code-focused retrieval path favors example pages."""
     docs = get_docs()
@@ -206,6 +239,9 @@ def main() -> None:
 
     test_get_doc_by_title()
     print("PASS test_get_doc_by_title")
+
+    test_loaded_doc_content_cleanup()
+    print("PASS test_loaded_doc_content_cleanup")
 
     test_code_example_search()
     print("PASS test_code_example_search")
