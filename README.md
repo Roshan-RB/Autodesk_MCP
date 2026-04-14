@@ -38,101 +38,69 @@ This keeps the project usable without republishing Autodesk documentation conten
 
 ---
 
-## Documentation Generation
+## Quick Start
 
-The repo includes a scraper script here:
+1. Clone the repository
 
-- `scraper_tavily/tavily_scraper.py`
+```bash
+git clone https://github.com/Roshan-RB/Autodesk_MCP.git
+cd Autodesk_MCP
+```
 
-The current provided scraping workflow uses the Tavily Extract API to retrieve and clean Alias documentation pages.
-It is the re-scraping step used in this project: it reads a seed index of documentation page URLs and writes the cleaned output dataset used by the server.
-
-### Basic scrape flow
-
-1. Install dependencies
+2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Set your Tavily API key
-
-Recommended: copy the example environment file and add your Tavily API key.
-
-```bash
-cp .env.example .env
-```
-
-On Windows PowerShell:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Then edit `.env`:
+3. Set your Tavily API key by copying `.env.example` to `.env` and adding your key:
 
 ```env
 TAVILY_API_KEY=your_api_key_here
 ```
 
-The scraper loads `.env` automatically. You can also set the variable directly in your shell instead.
+4. Confirm the seed URL index exists at `data/docs/index.json`
 
-Command Prompt:
-
-```bat
-set TAVILY_API_KEY=your_api_key_here
-```
-
-PowerShell:
-
-```powershell
-$env:TAVILY_API_KEY="your_api_key_here"
-```
-
-macOS/Linux:
-
-```bash
-export TAVILY_API_KEY=your_api_key_here
-```
-
-3. Use the provided seed index
-
-The scraper reads its source page list from:
-
-- `data/docs/index.json`
-
-This file is a URL manifest only. It contains page GUIDs, titles, and official Autodesk help URLs, not the scraped documentation content.
-
-4. Run a small test scrape first
+5. Generate the local documentation dataset using the provided scraper
 
 ```bash
 python scraper_tavily/tavily_scraper.py --test
-```
-
-5. Run the full scrape
-
-```bash
 python scraper_tavily/tavily_scraper.py
 ```
 
-### What the scraper produces
+A successful full scrape should report roughly 232 scraped pages and 0 failed or empty pages.
 
-After the scrape completes, the generated dataset is written locally under:
+6. Run the regression checks
 
-- `data/docs_tavily/`
+```bash
+python test_server.py
+```
 
-That folder will contain:
+The tests expect the generated corpus at `data/docs_tavily/index.json`.
 
-- one JSON file per documentation page
-- an `index.json` summary file for the generated corpus
-- a `failed_extractions.json` report listing any pages that Tavily could not extract or returned as empty
+7. Run the MCP server
 
-That generated folder is the dataset the MCP server reads at runtime.
+```bash
+python run_server.py
+```
 
-### About the two index files
+8. Inspect the server locally with MCP Inspector
 
-- `data/docs/index.json` is the committed seed manifest used by the scraper. It contains the page list, titles, GUIDs, and official Autodesk help URLs.
-- `data/docs_tavily/index.json` is generated locally by the scraper. It is the runtime corpus index used by the MCP server and is not committed to the repository.
+```bash
+npx @modelcontextprotocol/inspector --config .\inspector.json --server autodesk-alias-docs
+```
+
+The provided `inspector.json` uses `python run_server.py` and assumes you run the command from the repository root with the required Python environment active. If you prefer using a specific virtual environment, edit `inspector.json` to point to that Python executable.
+
+---
+
+## Generated Documentation Dataset
+
+The scraper uses the committed seed manifest at `data/docs/index.json`. This file only contains page titles, GUIDs, and official Autodesk help URLs.
+
+After scraping, the generated documentation dataset is written locally to `data/docs_tavily/`. That folder contains one JSON file per documentation page, a generated `index.json`, and a `failed_extractions.json` report. The MCP server reads this generated dataset at runtime.
+
+`data/docs_tavily/` is intentionally not committed because it contains scraped Autodesk documentation content.
 
 ---
 
@@ -146,38 +114,7 @@ Once the documentation has been generated locally, the server:
 - derives metadata such as headings, parent-page context, and code-block counts
 - builds a BM25-based search index over the chunked content
 
-This makes it easier for coding agents to:
-
-- search by API name
-- search by concept
-- fetch full pages
-- retrieve code-bearing examples for implementation work
-
----
-
-## Plug-in Build Requirements
-
-Building real Alias `.plugin` files requires:
-
-- Microsoft Visual Studio C++ build tools, including `nmake`, `cl.exe`, and `link.exe`
-- access to Autodesk Alias API headers and libraries, typically provided by a local Autodesk Alias installation
-
-This repository does **not** include Autodesk Alias SDK/ODS headers, libraries, or examples.
-
-The MCP server can help coding agents write Alias plug-ins, but compiling those plug-ins requires the Alias API files to be available on the build machine.
-
-For example, a local Alias installation may provide files such as:
-
-- `C:\Program Files\Autodesk\AliasAutoStudio2025.0\ODS\Common\include`
-- `C:\Program Files\Autodesk\AliasAutoStudio2025.0\lib\libAliasCore.lib`
-
-Before compiling a plug-in, set `ALIAS_LOCATION` in the plug-in `Makefile` to your local Alias installation path:
-
-```makefile
-ALIAS_LOCATION=C:\Program Files\Autodesk\AliasAutoStudio2025.0
-```
-
-Do not copy Autodesk SDK/ODS files into this repository unless Autodesk's license explicitly allows redistribution.
+This makes it easier for coding agents to search by API name, search by concept, fetch full pages, and retrieve code-bearing examples for implementation work.
 
 ---
 
@@ -250,6 +187,32 @@ query_alias_docs_filesystem("cat /guid/GUID-7EAE78D4-BAF9-40D3-AB9F-ED238F4620B3
 
 ---
 
+## Plug-in Build Requirements
+
+Building real Alias `.plugin` files requires:
+
+- Microsoft Visual Studio C++ build tools, including `nmake`, `cl.exe`, and `link.exe`
+- access to Autodesk Alias API headers and libraries, typically provided by a local Autodesk Alias installation
+
+This repository does **not** include Autodesk Alias SDK/ODS headers, libraries, or examples.
+
+The MCP server can help coding agents write Alias plug-ins, but compiling those plug-ins requires the Alias API files to be available on the build machine.
+
+For example, a local Alias installation may provide files such as:
+
+- `C:\Program Files\Autodesk\AliasAutoStudio2025.0\ODS\Common\include`
+- `C:\Program Files\Autodesk\AliasAutoStudio2025.0\lib\libAliasCore.lib`
+
+Before compiling a plug-in, set `ALIAS_LOCATION` in the plug-in `Makefile` to your local Alias installation path:
+
+```makefile
+ALIAS_LOCATION=C:\Program Files\Autodesk\AliasAutoStudio2025.0
+```
+
+Do not copy Autodesk SDK/ODS files into this repository unless Autodesk's license explicitly allows redistribution.
+
+---
+
 > [!TIP]
 > **Building a plug-in? Start with the included skill.**
 > The `.agent/skills/alias-plugin-dev/SKILL.md` file contains a coding agent skill derived from analysing
@@ -258,68 +221,6 @@ query_alias_docs_filesystem("cat /guid/GUID-7EAE78D4-BAF9-40D3-AB9F-ED238F4620B3
 > doesn't just know the API, it also knows how a well-built plug-in is supposed
 > to look. If you're using an agent like Claude Code or Cursor, point it to this
 > file before you start building.
-
----
-
-## Quick Start
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/Roshan-RB/Autodesk_MCP.git
-cd Autodesk_MCP
-```
-
-2. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-3. Set your Tavily API key
-
-```bash
-cp .env.example .env
-```
-
-Then edit `.env` and set:
-
-```env
-TAVILY_API_KEY=your_api_key_here
-```
-
-4. Confirm the seed URL index exists at `data/docs/index.json`
-
-5. Generate the local documentation dataset using the provided scraper
-
-```bash
-python scraper_tavily/tavily_scraper.py --test
-python scraper_tavily/tavily_scraper.py
-```
-
-A successful full scrape should report roughly 232 scraped pages and 0 failed or empty pages.
-
-6. Run the regression checks
-
-```bash
-python test_server.py
-```
-
-The tests expect the generated corpus at `data/docs_tavily/index.json`.
-
-7. Run the MCP server
-
-```bash
-python run_server.py
-```
-
-8. Inspect the server locally with MCP Inspector
-
-```bash
-npx @modelcontextprotocol/inspector --config .\inspector.json --server autodesk-alias-docs
-```
-
-The provided `inspector.json` uses `python run_server.py` and assumes you run the command from the repository root with the required Python environment active. If you prefer using a specific virtual environment, edit `inspector.json` to point to that Python executable.
 
 ---
 
