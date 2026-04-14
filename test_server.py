@@ -102,6 +102,15 @@ def test_search_rankings() -> None:
     _assert_top_result("Adding your plug-in to the UI", "Adding your plug-in to the UI")
 
 
+def test_search_followup_guidance() -> None:
+    """Verify discovery search tells agents how to fetch complete pages."""
+    output = search_alias_docs("plug-in", max_results=2)
+    _assert("## Next step" in output, "Expected next-step guidance in markdown search output")
+    _assert("get_doc_by_title" in output, "Expected full-page retrieval guidance")
+    _assert("get_code_examples" in output, "Expected code-block retrieval guidance")
+    _assert("Suggested exact titles:" in output, "Expected exact-title suggestions")
+
+
 def test_get_doc_by_title() -> None:
     """Verify the full-doc lookup still returns the requested page."""
     output = get_doc_by_title("AlCurve")
@@ -198,6 +207,8 @@ def test_json_outputs() -> None:
     _assert(search_payload["query"] == "Mouse Move", "Expected search query in JSON payload")
     _assert(search_payload["count"] >= 1, "Expected search result count in JSON payload")
     _assert(search_payload["results"][0]["title"] == "Momentary, Continuous and History plug-ins", "Expected top JSON search result")
+    _assert("next_step" in search_payload, "Expected JSON search payload to include next_step guidance")
+    _assert(search_payload["next_step"]["suggested_titles"], "Expected JSON next_step to include suggested titles")
 
     code_payload = json.loads(get_code_examples("plug-in", response_format="json"))
     _assert(code_payload["topic"] == "plug-in", "Expected code example topic in JSON payload")
@@ -255,6 +266,9 @@ def main() -> None:
 
     test_search_rankings()
     print("PASS test_search_rankings")
+
+    test_search_followup_guidance()
+    print("PASS test_search_followup_guidance")
 
     test_get_doc_by_title()
     print("PASS test_get_doc_by_title")

@@ -903,6 +903,20 @@ def _serialize_search_result(result: dict) -> dict:
     }
 
 
+def _build_search_followup(results: list[dict]) -> dict:
+    """Return agent-facing guidance for retrieving complete matched pages."""
+    titles = []
+    for result in results:
+        title = result.get("title")
+        if title and title not in titles:
+            titles.append(title)
+
+    return {
+        "message": "Search results are snippets. Use get_doc_by_title with an exact title for the full clean page, or get_code_examples for full code blocks from matched code pages.",
+        "suggested_titles": titles[:3],
+    }
+
+
 def _serialize_doc_summary(doc: dict) -> dict:
     """Select the stable summary fields for doc listings."""
     return {
@@ -944,6 +958,14 @@ def _format_search_results_markdown(query: str, results: list[dict]) -> str:
         output += f"**Matched terms:** {', '.join(result['matched_terms'])}\n"
         output += f"\n{result['snippet']}\n\n"
         output += "---\n\n"
+
+    followup = _build_search_followup(results)
+    output += "## Next step\n"
+    output += f"{followup['message']}\n\n"
+    if followup["suggested_titles"]:
+        output += "Suggested exact titles:\n"
+        for title in followup["suggested_titles"]:
+            output += f"- `{title}`\n"
 
     return output
 
@@ -1034,11 +1056,13 @@ def search_alias_docs(
         return f"No results found for: {query}"
 
     if normalized_format == "json":
+        serialized_results = [_serialize_search_result(result) for result in results]
         return _json_response({
             "query": query,
             "max_results": max_results,
             "count": len(results),
-            "results": [_serialize_search_result(result) for result in results],
+            "results": serialized_results,
+            "next_step": _build_search_followup(results),
         })
 
     return _format_search_results_markdown(query, results)
