@@ -285,10 +285,15 @@ def save_page(page_data: dict):
 
 def save_index(pages_scraped: list[dict], total_pages: int):
     """Save a new index.json for the Tavily-scraped data."""
+    failed_pages = [
+        page for page in pages_scraped
+        if page.get("error") or page.get("content_length", 0) == 0
+    ]
     index = {
         "source": "tavily_extract_advanced",
         "total_pages": total_pages,
         "pages_scraped": len(pages_scraped),
+        "failed_pages": len(failed_pages),
         "scraped_at": datetime.now(timezone.utc).isoformat(),
         "pages": pages_scraped,
     }
@@ -297,9 +302,26 @@ def save_index(pages_scraped: list[dict], total_pages: int):
         json.dump(index, f, indent=2, ensure_ascii=False)
 
 
+def save_failure_report(pages_scraped: list[dict], total_pages: int):
+    """Write a focused report for failed or empty extractions."""
+    failed_pages = [
+        page for page in pages_scraped
+        if page.get("error") or page.get("content_length", 0) == 0
+    ]
+    report = {
+        "source": "tavily_extract_advanced",
+        "total_pages": total_pages,
+        "failed_pages": len(failed_pages),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "pages": failed_pages,
+    }
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    with open(OUTPUT_DIR / "failed_extractions.json", 'w', encoding='utf-8') as f:
+        json.dump(report, f, indent=2, ensure_ascii=False)
+
+
 def scrape(test_mode: bool = False, test_count: int = 3):
     """Main scraping function."""
-    api_key = get_api_key()
     pages = load_index()
     total = len(pages)
 
@@ -323,7 +345,9 @@ def scrape(test_mode: bool = False, test_count: int = 3):
     # Check which pages already exist (resume support)
     existing = set()
     if OUTPUT_DIR.exists():
-        for f in OUTPUT_DIR.glob("GUID-*.json"):
+        for f in OUTPUT_DIR.glob("*.json"):
+            if f.name in {"index.json", "failed_extractions.json"}:
+                continue
             existing.add(f.stem)
 
     pages_to_scrape = [p for p in pages if p["guid"] not in existing]
@@ -332,10 +356,10 @@ def scrape(test_mode: bool = False, test_count: int = 3):
         print(f"Skipping {skipped} already-scraped pages (resume mode)")
 
     if not pages_to_scrape:
-        print("All pages already scraped!")
-        return
+        print("All pages already scraped; refreshing index files.")
 
     # Batch and scrape
+    api_key = get_api_key() if pages_to_scrape else ""
     scraped_index = []
     total_batches = (len(pages_to_scrape) + BATCH_SIZE - 1) // BATCH_SIZE
 
@@ -358,6 +382,20 @@ def scrape(test_mode: bool = False, test_count: int = 3):
                 cleaned = clean_content(raw, page["title"])
                 has_code = "```" in raw
 
+                if not cleaned.strip():
+                    error = "empty_content_after_cleaning" if raw else "empty_raw_content"
+                    print(f"  WARN: Empty extraction for {page['title']} ({error})")
+                    scraped_index.append({
+                        "guid": page["guid"],
+                        "title": page["title"],
+                        "url": url,
+                        "has_code_blocks": has_code,
+                        "content_length": 0,
+                        "raw_content_length": len(raw),
+                        "error": error,
+                    })
+                    continue
+
                 page_data = {
                     "guid": page["guid"],
                     "title": page["title"],
@@ -375,9 +413,9 @@ def scrape(test_mode: bool = False, test_count: int = 3):
                     "url": url,
                     "has_code_blocks": has_code,
                     "content_length": len(cleaned),
+                    "raw_content_length": len(raw),
                 })
 
-                status = "✓" if cleaned else "⚠ empty"
                 code_tag = " [has code]" if has_code else ""
                 print(f"  ✓ {page['title']} ({len(cleaned)} chars){code_tag}")
             else:
@@ -388,6 +426,7 @@ def scrape(test_mode: bool = False, test_count: int = 3):
                     "url": url,
                     "has_code_blocks": False,
                     "content_length": 0,
+                    "raw_content_length": 0,
                     "error": "extraction_failed",
                 })
 
@@ -397,7 +436,9 @@ def scrape(test_mode: bool = False, test_count: int = 3):
             time.sleep(DELAY_BETWEEN_BATCHES)
 
     # Also include previously scraped pages in index
-    for f in OUTPUT_DIR.glob("GUID-*.json"):
+    for f in OUTPUT_DIR.glob("*.json"):
+        if f.name in {"index.json", "failed_extractions.json"}:
+            continue
         guid = f.stem
         if not any(p["guid"] == guid for p in scraped_index):
             try:
@@ -409,20 +450,30 @@ def scrape(test_mode: bool = False, test_count: int = 3):
                     "url": data.get("url", ""),
                     "has_code_blocks": data.get("has_code_blocks", False),
                     "content_length": len(data.get("content", "")),
+                    "raw_content_length": len(data.get("raw_content", "")),
                 })
             except (json.JSONDecodeError, KeyError):
                 pass
 
     save_index(scraped_index, total)
+    save_failure_report(scraped_index, total)
 
     # Summary
     success = sum(1 for p in scraped_index if p.get("content_length", 0) > 0)
     with_code = sum(1 for p in scraped_index if p.get("has_code_blocks"))
-    failed = sum(1 for p in scraped_index if p.get("error"))
+    failed_pages = [
+        p for p in scraped_index
+        if p.get("error") or p.get("content_length", 0) == 0
+    ]
     print(f"\n{'='*60}")
-    print(f"DONE: {success} scraped, {with_code} with code blocks, {failed} failed")
+    print(f"DONE: {success} scraped, {with_code} with code blocks, {len(failed_pages)} failed/empty")
+    if failed_pages:
+        print("Failed or empty pages:")
+        for page in failed_pages:
+            print(f"  - {page['title']} ({page.get('error', 'empty_content')})")
     print(f"Output: {OUTPUT_DIR}")
     print(f"Index:  {OUTPUT_DIR / 'index.json'}")
+    print(f"Failures: {OUTPUT_DIR / 'failed_extractions.json'}")
 
 
 if __name__ == "__main__":

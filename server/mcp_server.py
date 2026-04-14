@@ -149,7 +149,7 @@ def enrich_doc_metadata(doc: dict) -> None:
     """Attach derived metadata to a document and its chunks."""
     content = doc.get("content", "")
     raw_or_clean = doc.get("raw_content") or content
-    category = "class" if doc.get("title", "").startswith("Al") else "guide"
+    category = _infer_doc_category(doc)
     parent_page_title, parent_page_url = _extract_parent_page(content)
 
     doc["category"] = category
@@ -183,6 +183,27 @@ def _count_code_blocks(text: str) -> int:
     if not text:
         return 0
     return len(re.findall(r"```", text)) // 2
+
+
+def _infer_doc_category(doc: dict) -> str:
+    """Classify docs without treating every word starting with "Al" as a class."""
+    title = doc.get("title", "").strip()
+    if _looks_like_alias_class_title(title):
+        return "class"
+    return "guide"
+
+
+def _looks_like_alias_class_title(title: str) -> bool:
+    """Return true for Alias class names and class-range pages."""
+    class_name = r"Al[A-Z][A-Za-z0-9]*"
+    title = title.strip()
+    if re.fullmatch(class_name, title):
+        return True
+    if re.fullmatch(rf"{class_name}\s*[–-]\s*{class_name}", title):
+        return True
+    if re.fullmatch(rf"{class_name}(?:,\s*{class_name})+", title):
+        return True
+    return False
 
 
 def _collect_doc_headings(chunks: list[dict]) -> list[str]:
@@ -986,7 +1007,7 @@ def list_available_docs(response_format: Literal["markdown", "json"] = "markdown
 
     output = f"Available documentation pages ({len(docs)} total):\n\n"
 
-    output += f"### Class Reference ({len(class_docs)} classes)\n"
+    output += f"### Class Reference ({len(class_docs)} pages)\n"
     for doc in class_docs:
         code_tag = " [code]" if doc.get("has_code_blocks") else ""
         output += f"- **{doc.get('title')}**{code_tag}\n"

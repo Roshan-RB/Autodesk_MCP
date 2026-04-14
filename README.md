@@ -125,6 +125,7 @@ That folder will contain:
 
 - one JSON file per documentation page
 - an `index.json` summary file for the generated corpus
+- a `failed_extractions.json` report listing any pages that Tavily could not extract or returned as empty
 
 That generated folder is the dataset the MCP server reads at runtime.
 
