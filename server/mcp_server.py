@@ -11,6 +11,7 @@ Data source: data/docs_tavily/
 import json
 import math
 import re
+import shlex
 from collections import Counter
 from pathlib import Path
 from typing import Literal
@@ -177,6 +178,8 @@ DOCS_DIR = Path(__file__).parent.parent / "data" / "docs_tavily"
 
 CHUNK_TARGET_SIZE = 1200
 CHUNK_HARD_MAX_SIZE = 1800
+FILESYSTEM_SEARCH_LIMIT = 80
+FILESYSTEM_OUTPUT_LIMIT = 30000
 
 
 # ---------------------------------------------------------------------------
@@ -317,6 +320,208 @@ def _strip_doc_footer(content: str) -> str:
         if index > 0:
             return content[:index].rstrip()
     return content
+
+
+def _slugify_title(title: str) -> str:
+    """Convert a doc title into a stable virtual markdown filename."""
+    slug = title.lower()
+    slug = slug.replace("'", "")
+    slug = re.sub(r"[^a-z0-9]+", "-", slug)
+    slug = slug.strip("-")
+    return slug or "untitled"
+
+
+def _virtual_doc_content(doc: dict) -> str:
+    """Render one documentation page as virtual markdown file content."""
+    return _format_doc_markdown(doc)
+
+
+def build_virtual_docs_filesystem(docs: list[dict] | None = None) -> dict[str, dict]:
+    """Build a virtual read-only docs filesystem from loaded documentation."""
+    if docs is None:
+        docs = get_docs()
+
+    path_map: dict[str, dict] = {}
+    used_slugs: dict[str, int] = {}
+
+    for doc in sorted(docs, key=lambda item: item.get("title", "")):
+        title = doc.get("title", "Untitled")
+        slug = _slugify_title(title)
+        used_slugs[slug] = used_slugs.get(slug, 0) + 1
+        suffix = f"-{used_slugs[slug]}" if used_slugs[slug] > 1 else ""
+        title_path = f"/{slug}{suffix}.md"
+
+        paths = [title_path]
+        guid = doc.get("guid")
+        if guid:
+            paths.append(f"/guid/{guid}.md")
+
+        for path in paths:
+            path_map[path] = {
+                "path": path,
+                "doc": doc,
+                "content": _virtual_doc_content(doc),
+            }
+
+    return path_map
+
+
+def _truncate_filesystem_output(output: str) -> str:
+    """Keep filesystem tool output bounded for MCP clients."""
+    if len(output) <= FILESYSTEM_OUTPUT_LIMIT:
+        return output
+    return output[:FILESYSTEM_OUTPUT_LIMIT].rstrip() + "\n\n... output truncated ..."
+
+
+def _resolve_virtual_path(path_map: dict[str, dict], path: str) -> dict | None:
+    """Resolve a virtual docs path exactly, accepting optional leading slash."""
+    if not path.startswith("/"):
+        path = f"/{path}"
+    return path_map.get(path)
+
+
+def _filesystem_ls(path_map: dict[str, dict], path: str = "/") -> str:
+    """List virtual docs filesystem paths."""
+    normalized = path.rstrip("/") or "/"
+    if normalized == "/":
+        root_files = sorted(path for path in path_map if path.count("/") == 1)
+        dirs = ["/guid/"] if any(path.startswith("/guid/") for path in path_map) else []
+        return "\n".join(dirs + root_files)
+
+    if normalized == "/guid":
+        return "\n".join(sorted(path for path in path_map if path.startswith("/guid/")))
+
+    return f"Path not found: {path}"
+
+
+def _filesystem_find(path_map: dict[str, dict], pattern: str = "") -> str:
+    """Find virtual paths by path/title substring."""
+    pattern_lower = pattern.lower()
+    matches = []
+
+    for path, entry in sorted(path_map.items()):
+        title = entry["doc"].get("title", "")
+        if not pattern_lower or pattern_lower in path.lower() or pattern_lower in title.lower():
+            matches.append(path)
+
+    return "\n".join(matches[:FILESYSTEM_SEARCH_LIMIT]) or f"No virtual docs matched: {pattern}"
+
+
+def _filesystem_cat(path_map: dict[str, dict], path: str) -> str:
+    """Return complete virtual file content."""
+    entry = _resolve_virtual_path(path_map, path)
+    if entry is None:
+        return f"Path not found: {path}"
+    return entry["content"]
+
+
+def _filesystem_head_tail(path_map: dict[str, dict], path: str, count: int, tail: bool = False) -> str:
+    """Return the first or last N lines from a virtual file."""
+    entry = _resolve_virtual_path(path_map, path)
+    if entry is None:
+        return f"Path not found: {path}"
+
+    line_count = max(1, min(count, 500))
+    lines = entry["content"].splitlines()
+    selected = lines[-line_count:] if tail else lines[:line_count]
+    return "\n".join(selected)
+
+
+def _filesystem_rg(path_map: dict[str, dict], pattern: str, include_line_numbers: bool = False) -> str:
+    """Regex-search virtual docs content."""
+    try:
+        regex = re.compile(pattern, re.IGNORECASE)
+    except re.error as error:
+        return f"Invalid regex pattern: {error}"
+
+    matches = []
+    for path, entry in sorted(path_map.items()):
+        if path.startswith("/guid/"):
+            continue
+        for line_number, line in enumerate(entry["content"].splitlines(), start=1):
+            if regex.search(line):
+                if include_line_numbers:
+                    matches.append(f"{path}:{line_number}: {line}")
+                else:
+                    matches.append(f"{path}: {line}")
+                if len(matches) >= FILESYSTEM_SEARCH_LIMIT:
+                    break
+        if len(matches) >= FILESYSTEM_SEARCH_LIMIT:
+            break
+
+    return "\n".join(matches) or f"No matches for pattern: {pattern}"
+
+
+def _strip_wrapping_quotes(value: str) -> str:
+    """Handle inspector/client inputs that preserve escaped quote characters."""
+    value = value.strip()
+    value = value.replace('\\"', '"')
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
+        return value[1:-1]
+    return value
+
+
+def _normalize_virtual_command(command: str) -> str:
+    """Normalize client-provided command text before safe parsing."""
+    normalized = command.replace("\r", " ").replace("\n", " ").strip()
+
+    for _ in range(2):
+        unescaped = normalized.replace('\\"', '"').strip()
+        if len(unescaped) >= 2 and unescaped[0] == unescaped[-1] and unescaped[0] in {'"', "'"}:
+            normalized = unescaped[1:-1].strip()
+            continue
+        normalized = unescaped
+        break
+
+    return normalized
+
+
+def run_virtual_docs_command(command: str, docs: list[dict] | None = None) -> str:
+    """Run a safe read-only command against the virtual docs filesystem."""
+    command = _normalize_virtual_command(command)
+
+    try:
+        args = shlex.split(command)
+    except ValueError as error:
+        return f"Invalid command: {error}"
+
+    if not args:
+        return "No command provided. Supported commands: ls, find, rg, head, tail, cat."
+
+    path_map = build_virtual_docs_filesystem(docs)
+    command_name = args[0].lower()
+
+    if command_name == "ls":
+        return _filesystem_ls(path_map, args[1] if len(args) > 1 else "/")
+
+    if command_name == "find":
+        return _filesystem_find(path_map, " ".join(args[1:]).strip())
+
+    if command_name == "cat":
+        if len(args) != 2:
+            return "Usage: cat /path.md"
+        return _filesystem_cat(path_map, args[1])
+
+    if command_name in {"head", "tail"}:
+        if len(args) < 2:
+            return f"Usage: {command_name} [-N] /path.md"
+        count = 80
+        path_arg = args[-1]
+        if len(args) >= 3 and args[1].startswith("-") and args[1][1:].isdigit():
+            count = int(args[1][1:])
+        return _filesystem_head_tail(path_map, path_arg, count, tail=(command_name == "tail"))
+
+    if command_name == "rg":
+        if len(args) < 2:
+            return 'Usage: rg [-n] "pattern" /'
+        include_line_numbers = "-n" in args[1:]
+        non_flag_args = [arg for arg in args[1:] if arg != "-n"]
+        if not non_flag_args:
+            return 'Usage: rg [-n] "pattern" /'
+        pattern = _strip_wrapping_quotes(non_flag_args[0])
+        return _filesystem_rg(path_map, pattern, include_line_numbers=include_line_numbers)
+
+    return f"Unsupported command: {args[0]}. Supported commands: ls, find, rg, head, tail, cat."
 
 
 def build_doc_chunks(doc: dict) -> list[dict]:
@@ -1274,6 +1479,32 @@ def get_code_examples(
         })
 
     return _format_code_results_markdown(topic, results)
+
+
+@mcp.tool()
+def query_alias_docs_filesystem(command: str) -> str:
+    """
+    Run a read-only shell-like query against a virtual Alias docs filesystem.
+
+    Supported commands:
+    - ls [/]
+    - find [text]
+    - rg [-n] "regex" /
+    - head [-N] /path.md
+    - tail [-N] /path.md
+    - cat /path.md
+
+    Args:
+        command: Safe read-only virtual command to run. This never executes a real shell command.
+
+    Returns:
+        Text output from the virtual documentation filesystem.
+    """
+    docs = get_docs()
+    if not docs:
+        return "No documentation available. Ensure data/docs_tavily/ contains scraped JSON files."
+
+    return _truncate_filesystem_output(run_virtual_docs_command(command, docs))
 
 
 @mcp.tool()
