@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from server.mcp_server import (
+    SERVER_INSTRUCTIONS,
     get_chunk_search_index,
     get_code_examples,
     get_doc_by_title,
@@ -13,6 +14,7 @@ from server.mcp_server import (
     search_alias_docs,
     search_code_examples,
     search_docs,
+    mcp,
 )
 
 
@@ -82,6 +84,15 @@ def test_seed_index_coverage() -> None:
     _assert(not missing_titles, f"Missing expected TOC titles: {sorted(missing_titles)}")
     _assert(len(titles) == len(set(titles)), "Expected unique titles in seed index")
     _assert(index_payload["total_pages"] == len(pages), "Expected total_pages to match pages length")
+
+
+def test_server_instructions() -> None:
+    """Verify MCP initialization exposes usage guidance to clients."""
+    _assert(mcp.instructions == SERVER_INSTRUCTIONS, "Expected FastMCP instructions to be configured")
+    _assert("Autodesk Alias Programmers' Interfaces" in SERVER_INSTRUCTIONS, "Expected Alias docs scope")
+    _assert("search_alias_docs" in SERVER_INSTRUCTIONS, "Expected search workflow guidance")
+    _assert("get_doc_by_title" in SERVER_INSTRUCTIONS, "Expected full-doc workflow guidance")
+    _assert("get_code_examples" in SERVER_INSTRUCTIONS, "Expected code-example workflow guidance")
 
 
 def test_load_and_index() -> None:
@@ -260,6 +271,9 @@ def main() -> None:
     """Run the regression suite as a standalone script."""
     test_seed_index_coverage()
     print("PASS test_seed_index_coverage")
+
+    test_server_instructions()
+    print("PASS test_server_instructions")
 
     test_load_and_index()
     print("PASS test_load_and_index")
