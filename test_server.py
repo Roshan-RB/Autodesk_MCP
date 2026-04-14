@@ -14,6 +14,7 @@ from server.mcp_server import (
     get_docs,
     list_available_docs,
     normalize_loaded_doc_content,
+    query_alias_docs_filesystem,
     search_alias_docs,
     search_code_examples,
     search_docs,
@@ -139,6 +140,45 @@ def test_search_followup_guidance() -> None:
     _assert("get_doc_by_title" in output, "Expected full-page retrieval guidance")
     _assert("get_code_examples" in output, "Expected code-block retrieval guidance")
     _assert("Suggested exact titles:" in output, "Expected exact-title suggestions")
+
+
+def test_query_alias_docs_filesystem() -> None:
+    """Verify the virtual docs filesystem supports safe read-only inspection."""
+    listing = query_alias_docs_filesystem("ls /")
+    _assert("/guid/" in listing, "Expected guid directory in root listing")
+    _assert("/alcurve.md" in listing, "Expected title-slug docs in root listing")
+
+    find_output = query_alias_docs_filesystem("find AlSurface")
+    _assert("/alsurface.md" in find_output, "Expected find to match virtual path/title")
+
+    rg_output = query_alias_docs_filesystem('rg -n "installOnMenu|installOnPalette" /')
+    _assert("/attaching-a-plug-in-to-a-menu-or-palette.md:" in rg_output, "Expected rg to include matching path")
+    _assert("installOnMenu" in rg_output, "Expected rg to match quoted regex pattern")
+
+    escaped_rg_output = query_alias_docs_filesystem(r'rg -n \"installOnMenu|installOnPalette\" /')
+    _assert(
+        "/attaching-a-plug-in-to-a-menu-or-palette.md:" in escaped_rg_output,
+        "Expected rg to handle Inspector-style escaped quotes",
+    )
+
+    wrapped_rg_output = query_alias_docs_filesystem(r' "rg -n \"installOnMenu|installOnPalette\" /" ')
+    _assert(
+        "/attaching-a-plug-in-to-a-menu-or-palette.md:" in wrapped_rg_output,
+        "Expected rg to handle fully wrapped Inspector command strings",
+    )
+
+    head_output = query_alias_docs_filesystem("head -12 /attaching-a-plug-in-to-a-menu-or-palette.md")
+    _assert(head_output.startswith("# Attaching a plug-in to a menu or palette"), "Expected head output")
+    _assert("AlFunction object" in head_output, "Expected page prose in head output")
+
+    tail_output = query_alias_docs_filesystem("tail -10 /momentary-plug-in-example.md")
+    _assert("plugin_exit" in tail_output or "deleteObject" in tail_output, "Expected tail output from code page")
+
+    cat_output = query_alias_docs_filesystem("cat /guid/GUID-7EAE78D4-BAF9-40D3-AB9F-ED238F4620B3.md")
+    _assert("h.installOnMenu" in cat_output, "Expected cat to resolve guid path")
+
+    unsupported_output = query_alias_docs_filesystem("rm /alcurve.md")
+    _assert("Unsupported command" in unsupported_output, "Expected unsupported commands to be rejected")
 
 
 def test_get_doc_by_title() -> None:
@@ -305,6 +345,9 @@ def main() -> None:
 
     test_search_followup_guidance()
     print("PASS test_search_followup_guidance")
+
+    test_query_alias_docs_filesystem()
+    print("PASS test_query_alias_docs_filesystem")
 
     test_get_doc_by_title()
     print("PASS test_get_doc_by_title")
