@@ -17,6 +17,132 @@ from typing import Literal
 
 from mcp.server.fastmcp import FastMCP
 
+ALIAS_PLUGIN_DEV_RESOURCE_URI = "alias://skills/alias-plugin-dev"
+
+ALIAS_PLUGIN_DEV_RESOURCE = """
+---
+name: Alias Plugin Development
+description: Use when building Autodesk Alias/OpenAlias C++ plug-ins with documentation-backed API lookups.
+metadata:
+  product: Autodesk Alias
+  documentation: Alias Programmers' Interfaces
+  project: autodesk-alias-docs
+---
+
+# Alias Plugin Development Primer
+
+## Product Summary
+
+This MCP server provides local access to scraped Autodesk Alias Programmers' Interfaces documentation. Use it to help coding agents build, review, or debug Autodesk Alias/OpenAlias C++ plug-ins with less hallucination and stronger grounding in the official API docs.
+
+The goal is practical plug-in development support for digital modelers: custom menu commands, workflow automation, geometry inspection tools, and small utilities that depend on Alias API classes and examples.
+
+This is not a general CAD reasoning engine. It does not understand surfacing intent, continuity, topology, or model quality by itself. It helps agents retrieve the documentation needed to write better Alias plug-in code.
+
+## When To Use
+
+Use this server when the task involves:
+
+- Autodesk Alias Programmers' Interfaces documentation.
+- OpenAlias or OpenModel concepts.
+- Alias C++ API classes such as `AlUniverse`, `AlFunctionHandle`, `AlDagNode`, `AlSurface`, or `AlCurveOnSurface`.
+- Alias plug-in lifecycle, UI attachment, menu/palette integration, option boxes, or build setup.
+- Code examples from the Alias API documentation.
+
+Do not use this server for unrelated Autodesk products, general C++ questions, generic CAD modeling advice, or code review tasks unless the answer depends on Alias API documentation.
+
+## Recommended MCP Workflow
+
+1. Use `search_alias_docs` for fuzzy discovery when you do not know the exact page.
+2. Use `get_doc_by_title` with an exact title to read a full clean documentation page.
+3. Use `get_code_examples` when full code blocks from matching code pages are needed.
+4. Use `list_available_docs` to browse all available pages and class references.
+
+Prefer full documentation pages before writing code. Search snippets are only discovery hints.
+
+## Plug-in Lifecycle
+
+An OpenAlias plug-in is usually a C++ DLL-style plug-in file loaded by Alias. The common lifecycle is:
+
+- `plugin_init`: called when Alias loads the plug-in.
+- `plugin_exit`: called when Alias unloads the plug-in.
+- `AlUniverse::initialize()`: normally called before using Alias API objects.
+- `AlFunction` / `AlMomentaryFunction` / `AlContinuousFunction`: define behavior.
+- `AlFunctionHandle`: attaches behavior to the Alias UI.
+
+Always verify exact signatures and status codes with `get_doc_by_title` because Alias SDK versions can differ.
+
+## Common Plug-in Types
+
+- Momentary plug-ins: run once from a menu or palette command.
+- Continuous plug-ins: interactive tools that respond to mouse/keyboard callbacks.
+- History plug-ins: advanced plug-ins tied to command/history behavior.
+- Option-box plug-ins: commands with editable UI parameters through `AlEditor`.
+
+For first implementations, prefer a small momentary plug-in unless the user explicitly needs interactive behavior.
+
+## UI Attachment Basics
+
+Useful starting pages:
+
+- `Momentary, Continuous and History plug-ins`
+- `Attaching a plug-in to a menu or palette`
+- `Menu and palette IDs for attaching a plug-in`
+- `Building Options Boxes`
+- `Momentary plug-in example`
+- `Continuous plug-in example`
+
+Common API concepts:
+
+- `AlFunctionHandle::create`
+- `AlFunctionHandle::addToMenu`
+- `AlFunctionHandle::installOnMenu`
+- `AlFunctionHandle::addToPalette`
+- `AlFunctionHandle::removeFromMenu`
+- `AlFunctionHandle::deleteObject`
+
+Common menu/palette IDs seen in examples include `al_goto`, `al_file`, `mp_objtools`, `mp_pick`, and `mp_objdisplay`. Check the menu ID page before hard-coding new locations.
+
+## Class Lookup Map
+
+Use these as search starting points:
+
+- Plug-in lifecycle/UI: `AlUniverse`, `AlFunction`, `AlFunctionHandle`, `AlMomentaryFunction`, `AlContinuousFunction`, `AlEditor`.
+- Scene graph and selection: `AlObject`, `AlDagNode`, `AlGroupNode`, `AlIterator`, `AlPickList`, `AlPickable`.
+- Curves: `AlCurve`, `AlCurveNode`, `AlCurveCV`, `AlCurvePoint`.
+- Surfaces/trims/COS: `AlSurface`, `AlSurfaceNode`, `AlSurfaceCV`, `AlSurfacePoint`, `AlCurveOnSurface`, `AlTrimRegion`, `AlTrimBoundary`, `AlTrimCurve`.
+- Mesh/tools: `AlMesh`, `AlMeshNode`, `AlModelTool`, `AlToolMeshFromNurbs`, `AlToolMeshMerge`, `AlToolStitch`.
+- Measurement/analysis: `AlMeasure`, `AlIntersect`, `AlTesselate`.
+
+## Build Notes
+
+Alias plug-ins are typically built on Windows with Microsoft Visual C++ tools. Use a Visual Studio x64 Native Tools Command Prompt so `cl.exe`, `link.exe`, and `nmake.exe` are available.
+
+The local Alias installation or SDK must provide the required headers and libraries. Do not commit Autodesk SDK files, generated plug-ins, build outputs, or scraped Autodesk documentation content into this repo.
+
+## Common Gotchas
+
+- Do not assume object ownership rules. Check docs for wrapper deletion and object deletion semantics.
+- Selected DAG nodes, surfaces, shells, faces, and curves-on-surface are different API concepts.
+- Trimmed surfaces may contain underlying data that is not visibly obvious.
+- COS counts can include hidden/trim-related underlying curves, not just visible curves.
+- Always handle empty selection and wrong object types.
+- Use `AlPrintf(kPrompt, ...)` for user-facing messages and `AlPrintf(kStdout, ...)` for debug output.
+- Unload a plug-in in Alias before rebuilding it to avoid locked output files.
+
+## Verification Checklist
+
+Before finalizing generated plug-in code:
+
+- Confirm plug-in type and menu/palette location.
+- Confirm selected object types and empty-selection behavior.
+- Retrieve exact API docs for every major Alias class used.
+- Check `statusCode` results for create/mutate operations.
+- Clean up handles, functions, editors, and wrappers.
+- Build in the expected Visual Studio x64 environment, or clearly state that build was not run.
+- Test by loading the plug-in in Alias Plug-in Manager and checking prompt/output behavior.
+""".strip()
+
 SERVER_INSTRUCTIONS = """
 Use this server for Autodesk Alias Programmers' Interfaces documentation, OpenAlias/OpenModel concepts, Alias C++ API classes, and Alias plug-in development.
 
@@ -33,6 +159,18 @@ Do not use this server for general C++ questions, unrelated Autodesk products, n
 
 # Initialize the MCP server
 mcp = FastMCP("autodesk-alias-docs", instructions=SERVER_INSTRUCTIONS)
+
+
+@mcp.resource(
+    ALIAS_PLUGIN_DEV_RESOURCE_URI,
+    name="alias-plugin-dev",
+    title="Alias Plugin Development",
+    description="Curated guidance for using Autodesk Alias Programmers' Interfaces docs to build OpenAlias C++ plug-ins.",
+    mime_type="text/markdown",
+)
+def alias_plugin_dev_resource() -> str:
+    """Return a compact Alias plug-in development primer for MCP clients."""
+    return ALIAS_PLUGIN_DEV_RESOURCE
 
 # Path to Tavily-scraped documentation
 DOCS_DIR = Path(__file__).parent.parent / "data" / "docs_tavily"
