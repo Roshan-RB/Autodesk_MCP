@@ -1,9 +1,16 @@
 {
   "source": "tavily_extract_advanced",
-  "total_pages": 225,
-  "pages_scraped": 225,
+  "total_pages": 232,
+  "pages_scraped": 232,
   "scraped_at": "2026-02-12T16:15:03.707599+00:00",
   "pages": [
+    {
+      "guid": "Alias_API_html",
+      "title": "Alias Programmers' Interfaces (API)",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=Alias_API_html",
+      "has_code_blocks": false,
+      "content_length": 3437
+    },
     {
       "guid": "GUID-0278C25C-730E-49AE-9125-EBCCA7434FF5",
       "title": "Adding your plug-in to the UI",
@@ -407,6 +414,13 @@
       "content_length": 2090
     },
     {
+      "guid": "925246fb-4db4-4853-a882-2cff065a33b6",
+      "title": "AlCanvas",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=925246fb-4db4-4853-a882-2cff065a33b6",
+      "has_code_blocks": false,
+      "content_length": 1087
+    },
+    {
       "guid": "GUID-73270D93-7A2B-43DE-957D-C90F409E202B",
       "title": "AlDagNode – AlLocator",
       "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-73270D93-7A2B-43DE-957D-C90F409E202B",
@@ -568,6 +582,13 @@
       "content_length": 2974
     },
     {
+      "guid": "Alias_API_Class_reference_AlDagNode_AlLocator_AlLinkListT_html",
+      "title": "AlLinkItemT, AlListT",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=Alias_API_Class_reference_AlDagNode_AlLocator_AlLinkListT_html",
+      "has_code_blocks": true,
+      "content_length": 13450
+    },
+    {
       "guid": "GUID-5745633A-C54F-4453-ADDC-D14BA6D3AB9B",
       "title": "AlLinkItem",
       "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-5745633A-C54F-4453-ADDC-D14BA6D3AB9B",
@@ -643,6 +664,13 @@
       "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-06DF71BA-33E2-4213-B0B2-9BF579AFD6F5",
       "has_code_blocks": true,
       "content_length": 12261
+    },
+    {
+      "guid": "Alias_API_Class_reference_AlMappedFieldItem_AlModelTool_html",
+      "title": "AlModelTool",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=Alias_API_Class_reference_AlMappedFieldItem_AlModelTool_html",
+      "has_code_blocks": true,
+      "content_length": 13222
     },
     {
       "guid": "GUID-F12854A4-097E-48FC-A5A1-97D36BEA4FF1",
@@ -1015,6 +1043,27 @@
       "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=GUID-762F70FE-BC24-413C-9F5C-E9EC84B5B749",
       "has_code_blocks": true,
       "content_length": 2852
+    },
+    {
+      "guid": "Alias_API_Class_reference_AlSet_AlXEvents_AlToolMeshFromNurbs_html",
+      "title": "AlToolMeshFromNurbs",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=Alias_API_Class_reference_AlSet_AlXEvents_AlToolMeshFromNurbs_html",
+      "has_code_blocks": true,
+      "content_length": 15042
+    },
+    {
+      "guid": "Alias_API_Class_reference_AlSet_AlXEvents_AlToolMeshMerge_html",
+      "title": "AlToolMeshMerge",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=Alias_API_Class_reference_AlSet_AlXEvents_AlToolMeshMerge_html",
+      "has_code_blocks": true,
+      "content_length": 14026
+    },
+    {
+      "guid": "Alias_API_Class_reference_AlSet_AlXEvents_AlToolStitch_html",
+      "title": "AlToolStitch",
+      "url": "https://help.autodesk.com/view/ALIAS/2026/ENU/?guid=Alias_API_Class_reference_AlSet_AlXEvents_AlToolStitch_html",
+      "has_code_blocks": true,
+      "content_length": 14677
     },
     {
       "guid": "GUID-A265B0DD-BC5B-4BF7-9455-185107D1D75E",

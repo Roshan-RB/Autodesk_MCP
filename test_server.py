@@ -1,6 +1,7 @@
 """Regression checks for the Autodesk Alias documentation MCP server."""
 
 import json
+from pathlib import Path
 
 from server.mcp_server import (
     get_chunk_search_index,
@@ -57,6 +58,29 @@ PLUGIN_EXAMPLE_TITLES = {
     "Continuous plug-in example",
     "Reference Data plug-in example",
 }
+
+EXPECTED_WEBSITE_TOC_TITLES = {
+    "Alias Programmers' Interfaces (API)",
+    "AlCanvas",
+    "AlLinkItemT, AlListT",
+    "AlModelTool",
+    "AlToolMeshFromNurbs",
+    "AlToolMeshMerge",
+    "AlToolStitch",
+}
+
+
+def test_seed_index_coverage() -> None:
+    """Verify the committed seed manifest includes known website TOC pages."""
+    index_path = Path(__file__).parent / "data" / "docs" / "index.json"
+    index_payload = json.loads(index_path.read_text(encoding="utf-8"))
+    pages = index_payload["pages"]
+    titles = [page["title"] for page in pages]
+    missing_titles = EXPECTED_WEBSITE_TOC_TITLES - set(titles)
+
+    _assert(not missing_titles, f"Missing expected TOC titles: {sorted(missing_titles)}")
+    _assert(len(titles) == len(set(titles)), "Expected unique titles in seed index")
+    _assert(index_payload["total_pages"] == len(pages), "Expected total_pages to match pages length")
 
 
 def test_load_and_index() -> None:
@@ -155,9 +179,25 @@ def test_list_available_docs() -> None:
     _assert("### Guides & Concepts" in output, "Expected guide section")
     _assert("**AlCurve**" in output, "Expected AlCurve in class listing")
 
+    payload = json.loads(list_available_docs(response_format="json"))
+    docs_by_title = {doc["title"]: doc for doc in payload["docs"]}
+    _assert(docs_by_title["AlCurve"]["category"] == "class", "Expected AlCurve to be classified as class")
+    _assert(
+        docs_by_title["Allocation of Input Values"]["category"] == "guide",
+        "Expected Allocation of Input Values to be classified as guide",
+    )
+    if "Alias Programmers' Interfaces (API)" in docs_by_title:
+        _assert(
+            docs_by_title["Alias Programmers' Interfaces (API)"]["category"] == "guide",
+            "Expected Alias Programmers' Interfaces (API) to be classified as guide",
+        )
+
 
 def main() -> None:
     """Run the regression suite as a standalone script."""
+    test_seed_index_coverage()
+    print("PASS test_seed_index_coverage")
+
     test_load_and_index()
     print("PASS test_load_and_index")
 
