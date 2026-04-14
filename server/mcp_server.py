@@ -17,8 +17,22 @@ from typing import Literal
 
 from mcp.server.fastmcp import FastMCP
 
+SERVER_INSTRUCTIONS = """
+Use this server for Autodesk Alias Programmers' Interfaces documentation, OpenAlias/OpenModel concepts, Alias C++ API classes, and Alias plug-in development.
+
+Use it to retrieve documentation-backed context before generating or modifying Alias plug-in code.
+
+Recommended workflow:
+1. Use search_alias_docs for fuzzy topic discovery.
+2. Use get_doc_by_title with an exact title to read a full clean documentation page.
+3. Use get_code_examples when full code blocks from matching code pages are needed.
+4. Use list_available_docs to browse available documentation pages.
+
+Do not use this server for general C++ questions, unrelated Autodesk products, non-Alias CAD workflows, or code review tasks unless the question specifically depends on Alias API documentation.
+""".strip()
+
 # Initialize the MCP server
-mcp = FastMCP("autodesk-alias-docs")
+mcp = FastMCP("autodesk-alias-docs", instructions=SERVER_INSTRUCTIONS)
 
 # Path to Tavily-scraped documentation
 DOCS_DIR = Path(__file__).parent.parent / "data" / "docs_tavily"
