@@ -607,9 +607,12 @@ def _score_chunk_result(
     )
     matched_terms = []
 
-    if query_lower == title_lower:
+    is_exact_title_match = query_lower == title_lower
+    is_exact_section_match = query_lower == section_title_lower
+
+    if is_exact_title_match:
         score += 50
-    if query_lower == section_title_lower:
+    if is_exact_section_match:
         score += 25
 
     for term in query_terms:
@@ -654,7 +657,13 @@ def _score_chunk_result(
             score += 4
 
     snippet = extract_snippet(chunk_text, query_terms)
-    code_snippet = extract_code_example(chunk_text, query_terms) if chunk.get("has_code") else None
+    if chunk.get("has_code"):
+        if code_focus:
+            code_snippet = extract_all_code_examples(doc.get("content", ""), query_terms)
+        else:
+            code_snippet = extract_code_example(chunk_text, query_terms)
+    else:
+        code_snippet = None
 
     return {
         "guid": doc.get("guid"),
@@ -796,20 +805,62 @@ def _truncate_code_block(block: str, max_length: int = 700) -> str:
     return f"{opening_fence}\n{trimmed_body}\n...\n{closing_fence}"
 
 
+def _nearest_code_context(content: str, code_start: int, query_terms: list[str]) -> str:
+    """Return the closest prose label before a code block."""
+    prefix = content[:code_start].strip()
+    if not prefix:
+        return ""
+
+    paragraphs = [
+        paragraph.strip()
+        for paragraph in re.split(r"\n\s*\n", prefix)
+        if paragraph.strip() and "```" not in paragraph
+    ]
+    if not paragraphs:
+        return ""
+
+    context = paragraphs[-1]
+    if len(context) > 220:
+        context = extract_snippet(context, query_terms, snippet_length=220)
+    return context
+
+
+def extract_all_code_examples(content: str, query_terms: list[str]) -> str | None:
+    """Extract every fenced code block from a document with nearby labels."""
+    if not content or "```" not in content:
+        return None
+
+    snippets = []
+    for code_match in re.finditer(r"```[\s\S]*?```", content):
+        code_block = code_match.group(0).strip()
+        context = _nearest_code_context(content, code_match.start(), query_terms)
+        snippets.append(f"{context}\n\n{code_block}" if context else code_block)
+
+    return "\n\n---\n\n".join(snippets) if snippets else None
+
+
 def extract_code_example(content: str, query_terms: list[str]) -> str | None:
     """Extract a code-centered snippet with brief surrounding context."""
     if not content or "```" not in content:
         return None
 
-    code_match = re.search(r"```[\s\S]*?```", content)
-    if code_match:
-        code_block = _truncate_code_block(code_match.group(0).strip())
-        prefix = content[:code_match.start()].strip()
-        if prefix:
-            context = extract_snippet(prefix, query_terms, snippet_length=180)
-            if context and "```" not in context:
-                return f"{context}\n\n{code_block}"
-        return code_block
+    code_matches = list(re.finditer(r"```[\s\S]*?```", content))
+    if code_matches:
+        snippets = []
+        total_length = 0
+
+        for code_match in code_matches[:3]:
+            code_block = _truncate_code_block(code_match.group(0).strip())
+            context = _nearest_code_context(content, code_match.start(), query_terms)
+            snippet = f"{context}\n\n{code_block}" if context else code_block
+
+            if snippets and total_length + len(snippet) > 1800:
+                break
+
+            snippets.append(snippet)
+            total_length += len(snippet)
+
+        return "\n\n---\n\n".join(snippets) if snippets else None
 
     if content.count("```") == 1:
         start = content.find("```")
