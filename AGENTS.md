@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository contains a Python MCP server for locally scraped Autodesk Alias Programmers' Interfaces documentation. Core server logic lives in `server/mcp_server.py`, with `run_server.py` as the runtime entry point. Regression checks are in `test_server.py`. The scraper lives in `scraper_tavily/tavily_scraper.py`; it reads the seed manifest at `data/docs/index.json` and writes generated documentation to `data/docs_tavily/`, which is intentionally ignored. The `.agent/skills/alias-plugin-dev/` skill is tracked; `alias-plugin/`, `experiments/`, `old_trash_files/`, and Autodesk source dumps are local working areas and should not be treated as release artifacts.
+This repository contains a Python MCP server for locally scraped Autodesk Alias Programmers' Interfaces documentation. Core server logic lives in `server/mcp_server.py`, with `run_server.py` as the runtime entry point. Regression checks are in `test_server.py`. The scraper lives in `scraper_tavily/tavily_scraper.py`; it reads the seed manifest at `data/docs/index.json` and writes generated documentation to `data/docs_tavily/`, which is intentionally ignored. The `.agent/skills/alias-plugin-dev/` skill is tracked. Local plug-in experiments, Autodesk source/reference dumps, and trash/archive folders should stay outside the repo; if folders such as `alias-plugin/`, `Autodesk_Original_Files/`, `experiments/`, or `old_trash_files/` appear locally, treat them as ignored non-release artifacts.
 
 ## Build, Test, and Development Commands
 
