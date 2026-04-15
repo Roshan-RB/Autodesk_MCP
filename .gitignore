@@ -56,10 +56,8 @@ mcp-builder/
 !.agent/skills/alias-plugin-dev/
 !.agent/skills/alias-plugin-dev/SKILL.md
 
-old_trash_files/*
-
-alias-plugin/*
-
-experiments/*
-
-Autodesk_Original_Files/*
+# Local reference / experiment folders (not release artifacts)
+alias-plugin/
+Autodesk_Original_Files/
+experiments/
+old_trash_files/
